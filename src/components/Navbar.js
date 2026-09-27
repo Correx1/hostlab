@@ -74,7 +74,7 @@ export function getNavbarHTML() {
 
             <!-- CTA: Get started Button with Arrow Icon -->
             <a 
-              href="/#pricing" 
+              href="/admin.html" 
               class="btn-primary"
             >
               <span>Get started</span>

@@ -8,6 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+  <script>
+    if (localStorage.getItem('hostlab-theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
 <body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 min-h-screen flex flex-col antialiased">
   <!-- Reusable Navbar Mount Root -->
@@ -272,7 +280,7 @@
                 <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
                   MANAGED VPS
                 </span>
-                <a href="/vps-hosting.html" class="btn-primary text-xs px-4 py-2 shrink-0">
+                <a href="/admin.html" class="btn-primary text-xs px-4 py-2 shrink-0">
                   <span>Get started</span>
                 </a>
               </div>
@@ -313,7 +321,7 @@
                 <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
                   SHARED HOSTING
                 </span>
-                <a href="/hosting.html" class="btn-outline text-xs px-4 py-2 shrink-0">
+                <a href="/admin.html" class="btn-outline text-xs px-4 py-2 shrink-0">
                   <span>Get started</span>
                 </a>
               </div>
@@ -354,7 +362,7 @@
                 <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
                   BUSINESS EMAIL
                 </span>
-                <a href="/business-email.html" class="btn-outline text-xs px-4 py-2 shrink-0">
+                <a href="/admin.html" class="btn-outline text-xs px-4 py-2 shrink-0">
                   <span>Get started</span>
                 </a>
               </div>
@@ -395,7 +403,7 @@
                 <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
                   CLOUD &amp; APP HOSTING
                 </span>
-                <a href="/hosting.html" class="btn-outline text-xs px-4 py-2 shrink-0">
+                <a href="/admin.html" class="btn-outline text-xs px-4 py-2 shrink-0">
                   <span>Get started</span>
                 </a>
               </div>

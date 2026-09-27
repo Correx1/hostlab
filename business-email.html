@@ -8,6 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+  <script>
+    if (localStorage.getItem('hostlab-theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
 <body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 min-h-screen flex flex-col antialiased">
   <!-- Reusable Navbar Mount Root -->
@@ -177,7 +185,7 @@
               </ul>
             </div>
             <div class="mt-10 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
-              <a href="#order" class="btn-primary w-full py-3.5 px-6 text-base font-semibold inline-flex items-center justify-center gap-2">
+              <a href="/admin.html" class="btn-primary w-full py-3.5 px-6 text-base font-semibold inline-flex items-center justify-center gap-2">
                 <span>Get started</span>
                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
               </a>

@@ -8,6 +8,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+  <script>
+    if (localStorage.getItem('hostlab-theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
 <body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 min-h-screen flex flex-col antialiased">
   <!-- Reusable Navbar Mount Root -->
@@ -32,7 +40,7 @@
           </p>
 
           <div class="mt-8 flex items-center gap-4">
-            <a href="#plans" class="btn-primary py-3.5 px-8 text-base font-semibold inline-flex items-center gap-2">
+            <a href="/admin.html" class="btn-primary py-3.5 px-8 text-base font-semibold inline-flex items-center gap-2">
               <span>Get started</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </a>
@@ -89,7 +97,7 @@
               </ul>
             </div>
             <div class="mt-8 pt-4">
-              <a href="#plans" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold border border-zinc-300 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-white text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-center">
+              <a href="/admin.html" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold border border-zinc-300 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-white text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-center">
                 <span>Get started</span>
               </a>
             </div>
@@ -130,7 +138,7 @@
               </ul>
             </div>
             <div class="mt-8 pt-4">
-              <a href="#plans" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold bg-white text-black hover:bg-zinc-200 transition-colors shadow-sm text-center">
+              <a href="/admin.html" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold bg-white text-black hover:bg-zinc-200 transition-colors shadow-sm text-center">
                 <span>Get started</span>
               </a>
             </div>
@@ -171,7 +179,7 @@
               </ul>
             </div>
             <div class="mt-8 pt-4">
-              <a href="#plans" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold border border-zinc-300 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-white text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-center">
+              <a href="/admin.html" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold border border-zinc-300 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-white text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-center">
                 <span>Get started</span>
               </a>
             </div>
@@ -212,7 +220,7 @@
               </ul>
             </div>
             <div class="mt-8 pt-4">
-              <a href="#plans" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold border border-zinc-300 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-white text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-center">
+              <a href="/admin.html" class="w-full inline-flex items-center justify-center py-3 px-5 rounded-md text-sm font-semibold border border-zinc-300 dark:border-zinc-700 hover:border-zinc-900 dark:hover:border-white text-zinc-900 dark:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors text-center">
                 <span>Get started</span>
               </a>
             </div>
