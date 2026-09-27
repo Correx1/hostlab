@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hosting Solutions | Four Ways to Host | Hostlab</title>
+  <meta name="description" content="Four ways to host something. One team behind all of them. From single WordPress sites to developer container fleets and dedicated bare-metal." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+  <!-- Reusable Navbar Mount Root -->
+  <div id="navbar-root"></div>
+
+  <!-- Main Content Container with Semantic HTML -->
+  <main id="app" class="flex-1">
+
+    <!-- 1. Hosting Hero Section -->
+    <section class="relative pt-28 pb-16 lg:pt-36 lg:pb-20 overflow-hidden bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.04)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.065)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.065)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-50 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="max-w-4xl">
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight leading-[1.08] text-zinc-900 dark:text-white">
+            Four ways to host something.<br />
+            <span class="text-zinc-500 dark:text-zinc-400">One team behind all of them.</span>
+          </h1>
+
+          <p class="mt-6 text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl font-normal">
+            From a single WordPress site to a fleet of client apps to a machine that's entirely yours, pick the layer that fits, move up whenever you need to.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. 4 Hosting Cards Section -->
+    <section class="relative py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 pt-10 border-t border-zinc-200/80 dark:border-zinc-900 gap-10 lg:gap-0">
+          
+          <!-- Card 1 -->
+          <div class="lg:px-8 lg:pl-0 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                FASTHOSTING
+              </div>
+              <h3 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-tight group-hover:underline">
+                WordPress &amp; WooCommerce
+              </h3>
+              <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Shared, resource-isolated hosting for your first site or a client's storefront.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>From $8/mo</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>NVMe storage, daily backups</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>Free SSL, always on</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-10 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+              <a href="#layers-detail" class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-black dark:group-hover:text-zinc-200 transition-colors">
+                <span>View FastHosting</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="lg:px-8 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                MANAGED VPS
+              </div>
+              <h3 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-tight group-hover:underline">
+                Full root, fully managed
+              </h3>
+              <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Your own server, we patch, monitor, and secure it in the background.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>From $15/mo</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>Scales 2GB &rarr; 32GB RAM</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>24/7 monitoring &amp; patching</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-10 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+              <a href="/vps-hosting.html" class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-black dark:group-hover:text-zinc-200 transition-colors">
+                <span>View Managed VPS</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="lg:px-8 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                DEDICATED BARE METAL
+              </div>
+              <h3 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-tight group-hover:underline">
+                The whole machine
+              </h3>
+              <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                No neighbors, no shared resources, for workloads that need it all.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>Custom-quoted specs</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>Full hardware isolation</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>Built for compliance &amp; scale</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-10 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+              <span class="text-sm font-mono text-zinc-400 dark:text-zinc-600 cursor-not-allowed">
+                Coming soon
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="lg:px-8 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
+                CLOUD &amp; APP HOSTING
+              </div>
+              <h3 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-tight group-hover:underline">
+                For custom apps
+              </h3>
+              <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Deploy Node, Docker, or a custom stack without touching a server.
+              </p>
+              <ul class="mt-8 space-y-3 text-sm text-zinc-700 dark:text-zinc-300">
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>From $15/mo</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>Git-based deploys</span>
+                </li>
+                <li class="flex items-center gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-900 dark:bg-zinc-200 shrink-0"></span>
+                  <span>Built for agencies</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-10 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+              <a href="/#pricing" class="inline-flex items-center gap-2 text-sm font-semibold text-zinc-900 dark:text-white group-hover:text-black dark:group-hover:text-zinc-200 transition-colors">
+                <span>View plans</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Hosting Layers Detail -->
+    <section id="layers-detail" class="relative pb-24 lg:pb-32 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 pt-10 border-t border-zinc-200/80 dark:border-zinc-900 gap-8 lg:gap-0">
+          
+          <!-- Layer 1 -->
+          <div class="lg:px-6 lg:pl-0 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest flex items-center justify-between">
+                <span>Layer 01</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-sm bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">$8/mo</span>
+              </div>
+              <div class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-3 group-hover:underline">
+                Shared Web
+              </div>
+              <div class="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
+                WordPress &amp; cPanel
+              </div>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed font-normal">
+                Single sites, blogs, and local businesses. 1-click installs, free SSL, and daily backups.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-100 dark:border-zinc-900/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-zinc-500 dark:text-zinc-400">cPanel included</span>
+              <span class="text-zinc-900 dark:text-white group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </div>
+          </div>
+
+          <!-- Layer 2 -->
+          <div class="lg:px-6 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest flex items-center justify-between">
+                <span>Layer 02</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-sm bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">$15/mo</span>
+              </div>
+              <div class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-3 group-hover:underline">
+                Cloud &amp; PaaS
+              </div>
+              <div class="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
+                Developer Git deploys
+              </div>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed font-normal">
+                Containerized app clusters. Push to git to build, run, and scale with zero devops friction.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-100 dark:border-zinc-900/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-zinc-500 dark:text-zinc-400">Docker &amp; Node/Go/Python</span>
+              <span class="text-zinc-900 dark:text-white group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </div>
+          </div>
+
+          <!-- Layer 3 -->
+          <div class="lg:px-6 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest flex items-center justify-between">
+                <span>Layer 03</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-sm bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">$15/mo</span>
+              </div>
+              <div class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-3 group-hover:underline">
+                Managed VPS
+              </div>
+              <div class="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
+                Virtual Private Servers
+              </div>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed font-normal">
+                Dedicated vCPU and NVMe RAM with automated security patching and 24/7 server monitoring.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-100 dark:border-zinc-900/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-zinc-500 dark:text-zinc-400">Full Root Access</span>
+              <span class="text-zinc-900 dark:text-white group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </div>
+          </div>
+
+          <!-- Layer 4 -->
+          <div class="lg:px-6 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between group">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest flex items-center justify-between">
+                <span>Layer 04</span>
+                <span class="text-[11px] px-2 py-0.5 rounded-sm bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 text-zinc-700 dark:text-zinc-300">Custom</span>
+              </div>
+              <div class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-3 group-hover:underline">
+                Dedicated Metal
+              </div>
+              <div class="text-xs font-mono text-zinc-500 dark:text-zinc-400 mt-0.5">
+                Entire machine isolation
+              </div>
+              <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-4 leading-relaxed font-normal">
+                100% bare-metal hardware completely reserved for you. Maximum IOPS and raw compute power.
+              </p>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-100 dark:border-zinc-900/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-zinc-500 dark:text-zinc-400">Isolated Hardware</span>
+              <span class="text-zinc-900 dark:text-white group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Tell Them Apart -->
+    <section class="relative py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mb-14 lg:mb-16">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            A quick way to tell them apart
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 pt-8 border-t border-zinc-200/80 dark:border-zinc-900 gap-10 md:gap-0">
+          <div class="md:px-8 md:pl-0 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">01</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                Just need a website live?
+              </h3>
+              <p class="mt-4 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                <span class="text-zinc-900 dark:text-white font-semibold">FastHosting.</span> WordPress, WooCommerce, or a static site, hosted, backed up, and secured without you touching a terminal.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:px-8 md:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">02</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                Need root access but not the sysadmin work?
+              </h3>
+              <p class="mt-4 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                <span class="text-zinc-900 dark:text-white font-semibold">Managed VPS.</span> Full control when you want it, someone else watching it when you don't.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:px-8 md:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">03</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                Need the entire machine to yourself?
+              </h3>
+              <p class="mt-4 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                <span class="text-zinc-900 dark:text-white font-semibold">Dedicated bare metal.</span> No shared resources, no noisy neighbors, built around your exact requirements.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Bottom CTA -->
+    <section class="relative py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-950 p-10 sm:p-14 lg:p-16 flex flex-col md:flex-row md:items-center justify-between gap-10">
+          <div class="max-w-2xl">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.15]">
+              Still not sure which tier fits?
+            </h2>
+            <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+              Tell us what you're running and we'll point you at the right one, no upsell, just the right fit.
+            </p>
+          </div>
+          <div class="shrink-0">
+            <a href="/contact.html" class="btn-primary py-3.5 px-8 text-base font-semibold text-center inline-flex items-center gap-2">
+              <span>Talk to us</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reusable Footer Mount Root -->
+  <div id="footer-root"></div>
+
+  <!-- Single JS Entry File for Main Frontend Website -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

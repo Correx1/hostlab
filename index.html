@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hostlab | Cloud Hosting, PaaS, Managed VPS &amp; Domains</title>
+  <meta name="description" content="Hostlab provides enterprise cloud hosting, Git-driven PaaS, managed VPS, automated cPanel migration, and domains with 99.9% uptime." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+  <!-- Reusable Navbar Mount Root -->
+  <div id="navbar-root"></div>
+
+  <!-- Main Content Container with Semantic HTML -->
+  <main id="app" class="flex-1">
+
+    <!-- 1. Hero Section -->
+    <section class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden bg-white dark:bg-black text-zinc-900 dark:text-white border-b border-zinc-200 dark:border-zinc-900">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.04)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.065)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.065)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-50 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="max-w-3xl">
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight leading-[1.08] text-zinc-900 dark:text-white">
+            We run the servers.<br />
+            <span class="text-zinc-500 dark:text-zinc-400">You run the business.</span>
+          </h1>
+
+          <p class="mt-6 text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-2xl font-normal">
+            Managed hosting, VPS, domains, and business email, monitored 24/7 by real engineers who keep your site online so you can focus on growth.
+          </p>
+
+          <div class="mt-10 max-w-xl">
+            <form id="hero-domain-form" class="relative flex items-center p-1.5 rounded-md bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-300 dark:border-zinc-800 shadow-sm hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors">
+              <div class="pl-3.5 pr-2 text-zinc-400 dark:text-zinc-500">
+                <i data-lucide="search" class="w-5 h-5"></i>
+              </div>
+              <input 
+                type="text" 
+                id="hero-domain-input"
+                placeholder="yourbusiness.com.ng"
+                class="w-full bg-transparent border-none py-3 text-base text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-0 font-mono"
+                autocomplete="off"
+                required
+              />
+              <button 
+                type="submit" 
+                class="btn-primary shrink-0 py-2.5 px-5 text-sm sm:text-base font-semibold"
+              >
+                <span>Check availability</span>
+              </button>
+            </form>
+
+            <div class="mt-3 flex items-center gap-3 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-mono">
+              <span><strong class="text-zinc-900 dark:text-white font-semibold">.com</strong> from $15/yr</span>
+              <span>·</span>
+              <span><strong class="text-zinc-900 dark:text-white font-semibold">.com.ng</strong> from $35/yr</span>
+            </div>
+
+            <div id="hero-domain-result" class="hidden mt-4 p-3 rounded-sm text-xs font-mono border"></div>
+          </div>
+        </div>
+
+        <div class="mt-8 lg:mt-12 grid grid-cols-1 md:grid-cols-3 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+          <div class="px-4 py-2 md:border-r border-zinc-200 dark:border-zinc-800">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+              Multi-region
+            </div>
+            <div class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-normal mt-1">
+              Data center regions
+            </div>
+          </div>
+
+          <div class="px-4 py-2 md:border-r border-zinc-200 dark:border-zinc-800">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+              24 / 7
+            </div>
+            <div class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-normal mt-1">
+              Support coverage
+            </div>
+          </div>
+
+          <div class="px-4 py-2">
+            <div class="text-2xl sm:text-3xl lg:text-4xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight flex items-center gap-2">
+              <span>99.9%</span>
+              <span class="w-2 h-2 rounded-full bg-zinc-900 dark:bg-white animate-pulse"></span>
+            </div>
+            <div class="text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-normal mt-1">
+              Uptime guaranteed
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Features Section -->
+    <section id="features" class="relative py-24 lg:py-32 overflow-hidden border-b border-zinc-200 dark:border-zinc-900">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mb-16 lg:mb-20">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Infrastructure built for speed.<br />
+            <span class="text-zinc-400 dark:text-zinc-500">Standard on every single plan.</span>
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          <div class="lg:col-span-7">
+            <div class="relative rounded-xl border border-zinc-300/40 dark:border-zinc-800/60 p-8 lg:p-12 overflow-hidden">
+              <div class="relative h-[320px] flex items-center justify-between overflow-hidden">
+                <div class="space-y-10 w-[55%] relative z-10">
+                  <div class="w-full h-14 rounded-sm border border-zinc-400/40 dark:border-zinc-700/50 bg-zinc-200/10 dark:bg-zinc-800/10 backdrop-blur-[2px]"></div>
+                  <div class="w-[45%] h-14 rounded-sm border border-zinc-400/40 dark:border-zinc-700/50 bg-zinc-200/10 dark:bg-zinc-800/10 backdrop-blur-[2px]"></div>
+                  <div class="w-[70%] h-14 rounded-sm border border-zinc-400/40 dark:border-zinc-700/50 bg-zinc-200/10 dark:bg-zinc-800/10 backdrop-blur-[2px]"></div>
+                </div>
+                <div class="absolute -right-4 -bottom-10 top-0 w-64 pointer-events-none flex items-center justify-center">
+                  <div class="w-32 lg:w-40 h-[140%] border-2 border-zinc-400/40 dark:border-zinc-700/50 bg-zinc-200/5 dark:bg-zinc-800/10 transform -skew-x-[32deg] backdrop-blur-[1px]"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 space-y-8">
+            <div>
+              <p class="text-xs font-mono uppercase tracking-widest text-zinc-500 dark:text-zinc-400 font-semibold mb-2">Core Foundation</p>
+              <h3 class="text-2xl sm:text-3xl font-bold font-display text-zinc-900 dark:text-white">
+                Everything you need to run in production.
+              </h3>
+            </div>
+
+            <div class="space-y-6">
+              <div class="border-l-2 border-zinc-900 dark:border-white pl-5">
+                <h4 class="text-lg font-semibold text-zinc-900 dark:text-white">NVMe SSD Storage</h4>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 leading-relaxed">
+                  On every plan, not just the expensive ones. Enterprise PCIe 4.0 storage so your databases and sites load without bottlenecks.
+                </p>
+              </div>
+
+              <div class="border-l-2 border-zinc-200 dark:border-zinc-800 hover:border-zinc-900 dark:hover:border-white pl-5 transition-colors">
+                <h4 class="text-lg font-semibold text-zinc-900 dark:text-white">Daily Automated Backups</h4>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 leading-relaxed">
+                  Restore points you can actually roll back to. Automated daily snapshots preserved safely for instant single-click recovery.
+                </p>
+              </div>
+
+              <div class="border-l-2 border-zinc-200 dark:border-zinc-800 hover:border-zinc-900 dark:hover:border-white pl-5 transition-colors">
+                <h4 class="text-lg font-semibold text-zinc-900 dark:text-white">Free SSL, Always On</h4>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 leading-relaxed">
+                  Every site, every domain, renewed automatically. Zero manual certificates and continuous HTTPS protection from day one.
+                </p>
+              </div>
+
+              <div class="border-l-2 border-zinc-200 dark:border-zinc-800 hover:border-zinc-900 dark:hover:border-white pl-5 transition-colors">
+                <h4 class="text-lg font-semibold text-zinc-900 dark:text-white">Real Humans on Support</h4>
+                <p class="text-sm text-zinc-600 dark:text-zinc-400 mt-1 leading-relaxed">
+                  Not a bot loop before you reach a person. Real systems engineers on WhatsApp and ticket queue whenever something breaks.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Domain Section -->
+    <section id="domains" class="relative py-24 lg:py-32 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mb-12">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Find your name before someone else does
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+            Registered properly, renewed at the same price, transferable whenever you want, no lock-in games.
+          </p>
+        </div>
+
+        <div class="max-w-2xl mb-12">
+          <form id="section-domain-form" class="relative flex items-center p-1.5 rounded-md bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-300 dark:border-zinc-800 shadow-sm hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors">
+            <div class="pl-3.5 pr-2 text-zinc-400 dark:text-zinc-500">
+              <i data-lucide="search" class="w-5 h-5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="section-domain-input"
+              placeholder="Search your domain name..."
+              class="w-full bg-transparent border-none py-3 text-base text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-0 font-mono"
+              autocomplete="off"
+              required
+            />
+            <button 
+              type="submit" 
+              class="btn-primary shrink-0 py-2.5 px-6 text-sm sm:text-base font-semibold"
+            >
+              <span>Search</span>
+            </button>
+          </form>
+
+          <div id="section-domain-result" class="hidden mt-4 p-3.5 rounded-md text-xs sm:text-sm font-mono border"></div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+          <div class="p-6 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.com</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Global standard</div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-semibold font-mono text-zinc-900 dark:text-white">$15/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.com.ng</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Nigerian businesses</div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-semibold font-mono text-zinc-900 dark:text-white">$35/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.net</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Infrastructure &amp; tech</div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-semibold font-mono text-zinc-900 dark:text-white">$18/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.org</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Organizations &amp; non-profits</div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-semibold font-mono text-zinc-900 dark:text-white">$16/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.ng</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">Official ccTLD</div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-zinc-200 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-semibold font-mono text-zinc-900 dark:text-white">$45/yr</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Pricing Section -->
+    <section id="pricing" class="relative py-24 lg:py-32 border-b border-zinc-200 dark:border-zinc-900">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mx-auto text-center mb-16 lg:mb-20">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Pick the layer of the internet you need
+          </h2>
+          <p class="mt-5 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal max-w-2xl mx-auto">
+            From your first website to a fleet of client apps, start small, move up without switching providers.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <!-- Card 1: Managed VPS -->
+          <div class="lg:col-span-7 p-8 sm:p-10 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800/80 shadow-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-8">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
+                  MANAGED VPS
+                </span>
+                <a href="/vps-hosting.html" class="btn-primary text-xs px-4 py-2 shrink-0">
+                  <span>Get started</span>
+                </a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                <div class="sm:col-span-5">
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl sm:text-5xl font-bold font-display text-zinc-900 dark:text-white">$15</span>
+                    <span class="text-sm font-mono text-zinc-500 dark:text-zinc-400">/month</span>
+                  </div>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
+                    Full root access, but we patch it, monitor it, and answer when it pages.
+                  </p>
+                </div>
+
+                <div class="sm:col-span-7 space-y-3 font-sans text-sm text-zinc-700 dark:text-zinc-300">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Full root access, fully managed</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Security patching &amp; monitoring</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Scales from 2GB to 32GB RAM</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Shared Hosting -->
+          <div class="lg:col-span-5 p-8 sm:p-10 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800/80 shadow-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-8">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
+                  SHARED HOSTING
+                </span>
+                <a href="/hosting.html" class="btn-outline text-xs px-4 py-2 shrink-0">
+                  <span>Get started</span>
+                </a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                <div class="sm:col-span-5">
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl sm:text-5xl font-bold font-display text-zinc-900 dark:text-white">$8</span>
+                    <span class="text-sm font-mono text-zinc-500 dark:text-zinc-400">/month</span>
+                  </div>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
+                    WordPress, WooCommerce, or a static site hosted properly.
+                  </p>
+                </div>
+
+                <div class="sm:col-span-7 space-y-3 font-sans text-sm text-zinc-700 dark:text-zinc-300">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>WordPress &amp; WooCommerce ready</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Free SSL &amp; daily backups</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>cPanel included</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Business Email -->
+          <div class="lg:col-span-5 p-8 sm:p-10 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800/80 shadow-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-8">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
+                  BUSINESS EMAIL
+                </span>
+                <a href="/business-email.html" class="btn-outline text-xs px-4 py-2 shrink-0">
+                  <span>Get started</span>
+                </a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                <div class="sm:col-span-5">
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl sm:text-5xl font-bold font-display text-zinc-900 dark:text-white">$3</span>
+                    <span class="text-sm font-mono text-zinc-500 dark:text-zinc-400">/month</span>
+                  </div>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
+                    Custom domain mailbox on your invoices.
+                  </p>
+                </div>
+
+                <div class="sm:col-span-7 space-y-3 font-sans text-sm text-zinc-700 dark:text-zinc-300">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Webmail &amp; IMAP/POP access</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Spam &amp; malware filtering</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Works with any domain</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Cloud & App Hosting -->
+          <div class="lg:col-span-7 p-8 sm:p-10 rounded-xl bg-zinc-50 dark:bg-zinc-950/80 border border-zinc-200 dark:border-zinc-800/80 shadow-md hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between gap-4 mb-8">
+                <span class="text-xs font-mono font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-zinc-200 dark:bg-zinc-800 text-zinc-900 dark:text-white">
+                  CLOUD &amp; APP HOSTING
+                </span>
+                <a href="/hosting.html" class="btn-outline text-xs px-4 py-2 shrink-0">
+                  <span>Get started</span>
+                </a>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
+                <div class="sm:col-span-5">
+                  <div class="flex items-baseline gap-1">
+                    <span class="text-4xl sm:text-5xl font-bold font-display text-zinc-900 dark:text-white">$15</span>
+                    <span class="text-sm font-mono text-zinc-500 dark:text-zinc-400">/month</span>
+                  </div>
+                  <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">
+                    Deploy Node, Docker, or a custom stack automatically.
+                  </p>
+                </div>
+
+                <div class="sm:col-span-7 space-y-3 font-sans text-sm text-zinc-700 dark:text-zinc-300">
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Git-based push deployments</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Custom domains &amp; auto-SSL</span>
+                  </div>
+                  <div class="flex items-center gap-2.5">
+                    <i data-lucide="check" class="w-4 h-4 text-zinc-900 dark:text-white shrink-0"></i>
+                    <span>Built for teams &amp; agencies</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Interactive Tabs Section -->
+    <section id="platform-features" class="relative py-24 lg:py-32 border-b border-zinc-200 dark:border-zinc-900">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mb-12">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Everything you need to ship faster
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+            Hostlab brings collaboration, automation, and enterprise-grade security together in one connected platform.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2 p-1.5 rounded-full bg-zinc-100 dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 w-fit mb-14" role="tablist">
+          <button 
+            type="button" 
+            class="tab-btn active px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-150 bg-black text-white dark:bg-white dark:text-black shadow-sm cursor-pointer"
+            data-tab="collaboration"
+          >
+            Collaboration
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-150 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white cursor-pointer"
+            data-tab="automation"
+          >
+            Automation
+          </button>
+          <button 
+            type="button" 
+            class="tab-btn px-5 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all duration-150 text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-white cursor-pointer"
+            data-tab="security"
+          >
+            Security
+          </button>
+        </div>
+
+        <div id="tabs-content-wrapper">
+          <!-- Tab 1: Collaboration -->
+          <div id="tab-collaboration" class="tab-pane grid grid-cols-1 md:grid-cols-3 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+            <div class="px-6 py-4 md:border-r border-zinc-200 dark:border-zinc-800">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Shared workspaces
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                Bring every team into one workspace with granular roles, member permissions, and instant invites.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+
+            <div class="px-6 py-4 md:border-r border-zinc-200 dark:border-zinc-800">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Inline comments
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                Discuss changes directly in context with threaded deployment logs, mentions, and instant notifications.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+
+            <div class="px-6 py-4">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Version history
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                Track every edit, Git push, and secret modification with single-click zero-downtime rollbacks.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Automation -->
+          <div id="tab-automation" class="tab-pane hidden grid grid-cols-1 md:grid-cols-3 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+            <div class="px-6 py-4 md:border-r border-zinc-200 dark:border-zinc-800">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Nixpacks build engine
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                Auto-detects Node, Laravel, Python, Go, and Docker runtimes to compile reproducible container images.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+
+            <div class="px-6 py-4 md:border-r border-zinc-200 dark:border-zinc-800">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Automated SSL &amp; DNS
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                On-Demand TLS automatically provisions Let's Encrypt certificates whenever a custom domain hits the proxy.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+
+            <div class="px-6 py-4">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Scheduled background tasks
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                Run automated cron schedules, database backups, and health checks without provisioning worker servers.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Security -->
+          <div id="tab-security" class="tab-pane hidden grid grid-cols-1 md:grid-cols-3 pt-6 border-t border-zinc-200/80 dark:border-zinc-900">
+            <div class="px-6 py-4 md:border-r border-zinc-200 dark:border-zinc-800">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Hardware sandboxing
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                Every container is constrained using cgroups v2, memory limits, and non-privileged execution contexts.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+
+            <div class="px-6 py-4 md:border-r border-zinc-200 dark:border-zinc-800">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                Encrypted environment secrets
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                All production environment variables and keys are encrypted at rest with AES-256 before disk storage.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+
+            <div class="px-6 py-4">
+              <div class="text-2xl sm:text-3xl font-light font-display tracking-tight text-zinc-900 dark:text-white leading-tight">
+                DDoS &amp; network shield
+              </div>
+              <div class="text-sm text-zinc-600 dark:text-zinc-400 font-normal mt-3 leading-relaxed">
+                Layer 3/4 edge protection and automated rate-limiting keep malicious traffic away from origin servers.
+              </div>
+              <div class="text-xs font-mono text-zinc-400 dark:text-zinc-500 mt-4">
+                Included on every plan
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reusable Footer Mount Root -->
+  <div id="footer-root"></div>
+
+  <!-- Single JS Entry File for Main Frontend Website -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

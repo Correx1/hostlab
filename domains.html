@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Domains | Find Your Name | Hostlab</title>
+  <meta name="description" content="Find your name before someone else does. Registered properly, renewed at the same price, DNS managed on Cloudflare's global network by default." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-white text-zinc-900 dark:bg-black dark:text-zinc-100 min-h-screen flex flex-col antialiased">
+  <!-- Reusable Navbar Mount Root -->
+  <div id="navbar-root"></div>
+
+  <!-- Main Content Container with Semantic HTML -->
+  <main id="app" class="flex-1">
+
+    <!-- 1. Domain Hero Section -->
+    <section class="relative pt-28 pb-20 lg:pt-36 lg:pb-28 overflow-hidden bg-white dark:bg-black text-zinc-900 dark:text-white border-b border-zinc-200 dark:border-zinc-900">
+      <div class="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.04)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.065)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.065)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)] opacity-50 pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+        <div class="max-w-4xl">
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-bold font-display tracking-tight leading-[1.08] text-zinc-900 dark:text-white">
+            Find your name<br />
+            <span class="text-zinc-500 dark:text-zinc-400">before someone else does.</span>
+          </h1>
+
+          <p class="mt-6 text-lg sm:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-3xl font-normal">
+            Registered properly, renewed at the same price, DNS managed on Cloudflare's global network by default, no lock-in games.
+          </p>
+
+          <div class="mt-10 max-w-2xl">
+            <form id="domains-page-form" class="relative flex items-center p-1.5 rounded-md bg-zinc-100 dark:bg-zinc-900/90 border border-zinc-300 dark:border-zinc-800 shadow-sm hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors">
+              <div class="pl-3.5 pr-2 text-zinc-400 dark:text-zinc-500">
+                <i data-lucide="search" class="w-5 h-5"></i>
+              </div>
+              <input 
+                type="text" 
+                id="domains-page-input"
+                placeholder="Search your domain name..."
+                class="w-full bg-transparent border-none py-3 text-base text-zinc-900 dark:text-white placeholder-zinc-400 dark:placeholder-zinc-500 focus:outline-none focus:ring-0 font-mono"
+                autocomplete="off"
+                required
+              />
+              <button 
+                type="submit" 
+                class="btn-primary shrink-0 py-2.5 px-6 text-sm sm:text-base font-semibold"
+              >
+                <span>Search</span>
+              </button>
+            </form>
+
+            <div class="mt-4 flex flex-wrap items-center gap-3 text-xs sm:text-sm text-zinc-500 dark:text-zinc-400 font-mono">
+              <span><strong class="text-zinc-900 dark:text-white font-semibold">.com</strong> from $15/yr</span>
+              <span>·</span>
+              <span><strong class="text-zinc-900 dark:text-white font-semibold">.io</strong> from $42/yr</span>
+              <span>·</span>
+              <span>no surprise renewal hikes</span>
+            </div>
+
+            <div id="domains-page-result" class="hidden mt-4 p-3.5 rounded-md text-xs sm:text-sm font-mono border"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Domain Pricing Section -->
+    <section class="relative py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mb-16">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Pricing
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+            Straightforward, per-year pricing
+          </p>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+          <div class="p-6 rounded-md bg-zinc-50/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.com</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">Standard for global commercial presence</div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-200/80 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-white">$15/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.net</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">Ideal for networks and infrastructure</div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-200/80 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-white">$18/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.org</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">Trusted by organizations and communities</div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-200/80 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-white">$16/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.io</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">The default choice for developer tech</div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-200/80 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-white">$42/yr</div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-md bg-zinc-50/70 dark:bg-zinc-950/60 border border-zinc-200 dark:border-zinc-800/80 hover:border-zinc-400 dark:hover:border-zinc-600 transition-all flex flex-col justify-between group">
+            <div>
+              <div class="text-2xl sm:text-3xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white group-hover:underline">.co</div>
+              <div class="text-xs text-zinc-500 dark:text-zinc-400 mt-2 leading-relaxed">Modern alternative for innovators and startups</div>
+            </div>
+            <div class="mt-8 pt-4 border-t border-zinc-200/80 dark:border-zinc-900">
+              <div class="text-xl sm:text-2xl font-bold font-mono text-zinc-900 dark:text-white">$28/yr</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Why Cloudflare for DNS -->
+    <section class="relative py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mb-16">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Why Cloudflare for DNS
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+            One DNS layer, no matter where you host
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 pt-8 border-t border-zinc-200/80 dark:border-zinc-900 gap-10 md:gap-0">
+          <div class="md:px-8 md:pl-0 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">01</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                Fast, everywhere
+              </h3>
+              <p class="mt-4 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Cloudflare's anycast network answers DNS queries from the location closest to whoever's asking.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:px-8 md:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">02</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                Protected by default
+              </h3>
+              <p class="mt-4 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                DDoS mitigation and abuse protection built into the same layer that resolves your domain.
+              </p>
+            </div>
+          </div>
+
+          <div class="md:px-8 md:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">03</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                One place to manage records
+              </h3>
+              <p class="mt-4 text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Whether you host with us or elsewhere, your DNS records live in one consistent, reliable place.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Included with every domain -->
+    <section class="relative py-20 lg:py-28 border-b border-zinc-200 dark:border-zinc-900 bg-white dark:bg-black text-zinc-900 dark:text-white">
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="max-w-3xl mb-16">
+          <h2 class="text-3xl sm:text-5xl lg:text-6xl font-bold font-display tracking-tight text-zinc-900 dark:text-white leading-[1.1]">
+            Included with every domain
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+            Essential protection and high-performance infrastructure standard on every registration
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 pt-8 border-t border-zinc-200/80 dark:border-zinc-900 gap-10 lg:gap-0">
+          <div class="lg:px-8 lg:pl-0 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">01</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                DNS on Cloudflare
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Every domain's DNS runs on Cloudflare's global network by default.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:px-8 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">02</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                WHOIS privacy included
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Your personal details stay off the public record.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:px-8 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">03</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                Easy transfers
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Your auth code, on request, no friction.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:px-8 lg:border-l border-zinc-200 dark:border-zinc-800 flex flex-col justify-between">
+            <div>
+              <div class="text-xs font-mono font-bold text-zinc-400 dark:text-zinc-500 uppercase tracking-widest">04</div>
+              <h3 class="text-xl sm:text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-4 leading-snug">
+                DDoS-protected DNS
+              </h3>
+              <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed font-normal">
+                Cloudflare's network absorbs attacks before they reach you.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reusable Footer Mount Root -->
+  <div id="footer-root"></div>
+
+  <!-- Single JS Entry File for Main Frontend Website -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

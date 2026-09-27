@@ -1,0 +1,903 @@
+import { createIcons, icons } from 'lucide';
+
+/**
+ * Hostlab VPS SSH Keys Module
+ * Dedicated standalone module for cryptographic public key management,
+ * automated cloud-init provisioning, and server access authorization.
+ */
+
+// ==========================================
+// 1. DATA STORES & STATE
+// ==========================================
+
+export const sshStats = {
+  totalKeys: 42,
+  ed25519Keys: 31,
+  rsaKeys: 11,
+  attachedInstances: 486,
+  securityCompliance: '100%'
+};
+
+export const initialSshKeys = [
+  {
+    id: 'ssh-901',
+    name: 'devops-lead-ed25519',
+    type: 'ED25519',
+    fingerprint: 'SHA256:mK9p+vB8x1Z3Lq4Y7wT0rE2uI5oP8sD1fG3hJ5kL7mN',
+    publicKey: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG4Z+9Vn3FkQ1k2L4p5Q6r7S8t9U0v1W2x3Y4z5A6B7C devops@hostlab.cloud',
+    comment: 'devops@hostlab.cloud',
+    attachedServers: ['prod-api-cluster-01', 'db-master-postgres', 'analytics-k8s-node-03'],
+    createdAt: '2024-01-10',
+    lastUsed: '2 hours ago',
+    status: 'active' // active | unassigned
+  },
+  {
+    id: 'ssh-902',
+    name: 'ci-cd-deployer-iad',
+    type: 'ED25519',
+    fingerprint: 'SHA256:9qW8e7R6t5Y4u3I2o1P0a9S8d7F6g5H4j3K2l1Z0x9C',
+    publicKey: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIK7M+8Xn2GjP0j1K3o4P5q6R7s8T9u0V1w2X3y4Z5a6B github-actions@apexstudios.design',
+    comment: 'github-actions@apexstudios.design',
+    attachedServers: ['redis-cache-iad', 'edge-vpn-gateway'],
+    createdAt: '2024-02-14',
+    lastUsed: '18 minutes ago',
+    status: 'active'
+  },
+  {
+    id: 'ssh-903',
+    name: 'legacy-bastion-rsa4096',
+    type: 'RSA 4096',
+    fingerprint: 'SHA256:1a2B3c4D5e6F7g8H9i0J1k2L3m4N5o6P7q8R9s0T1uV',
+    publicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDf4K8+9L0M... admin-bastion@hostlab.internal',
+    comment: 'admin-bastion@hostlab.internal',
+    attachedServers: ['prod-api-cluster-01', 'staging-env-nextjs'],
+    createdAt: '2023-09-04',
+    lastUsed: 'Yesterday',
+    status: 'active'
+  },
+  {
+    id: 'ssh-904',
+    name: 'david-macbook-pro-2024',
+    type: 'ED25519',
+    fingerprint: 'SHA256:8hG7f6E5d4C3b2A1z0Y9x8W7v6U5t4S3r2Q1p0O9n8M',
+    publicKey: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIH2P+5Qm1FjN9i0J2n3O4p5Q6r7S8t9U0v1W2x3Y4z5A david@apexstudios.design',
+    comment: 'david@apexstudios.design',
+    attachedServers: ['prod-api-cluster-01'],
+    createdAt: '2024-03-01',
+    lastUsed: '3 days ago',
+    status: 'active'
+  },
+  {
+    id: 'ssh-905',
+    name: 'sarah-jenkins-workstation',
+    type: 'ED25519',
+    fingerprint: 'SHA256:3kL4m5N6o7P8q9R0s1T2u3V4w5X6y7Z8a9B0c1D2e3F',
+    publicKey: 'ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE1K+4Pj0GhL8g9I1m2N3o4P5q6R7s8T9u0V1w2X3y4Z sarah@techflow.io',
+    comment: 'sarah@techflow.io',
+    attachedServers: ['db-master-postgres'],
+    createdAt: '2024-02-20',
+    lastUsed: '5 hours ago',
+    status: 'active'
+  },
+  {
+    id: 'ssh-906',
+    name: 'backup-sync-daemon-key',
+    type: 'RSA 4096',
+    fingerprint: 'SHA256:5vU4t3S2r1Q0p9O8n7M6l5K4j3I2h1G0f9E8d7C6b5A',
+    publicKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC89F1+... backup-daemon@novatech.ai',
+    comment: 'backup-daemon@novatech.ai',
+    attachedServers: [],
+    createdAt: '2023-11-12',
+    lastUsed: 'Never',
+    status: 'unassigned'
+  }
+];
+
+// In-memory state
+let sshKeysList = [...initialSshKeys];
+let currentFilter = 'all'; // all | ed25519 | rsa | unassigned
+let currentSearch = '';
+
+function getFilteredSshKeys() {
+  return sshKeysList.filter(k => {
+    if (currentFilter !== 'all') {
+      if (currentFilter === 'ed25519' && k.type !== 'ED25519') return false;
+      if (currentFilter === 'rsa' && !k.type.includes('RSA')) return false;
+      if (currentFilter === 'unassigned' && k.status !== 'unassigned') return false;
+    }
+    if (currentSearch.trim() !== '') {
+      const q = currentSearch.toLowerCase();
+      return (
+        k.name.toLowerCase().includes(q) ||
+        k.fingerprint.toLowerCase().includes(q) ||
+        k.comment.toLowerCase().includes(q) ||
+        k.attachedServers.some(srv => srv.toLowerCase().includes(q))
+      );
+    }
+    return true;
+  });
+}
+
+// ==========================================
+// 2. VIEW TEMPLATES & COMPONENTS
+// ==========================================
+
+function getSshStatsCardsHTML() {
+  const edCount = sshKeysList.filter(k => k.type === 'ED25519').length;
+  const rsaCount = sshKeysList.filter(k => k.type.includes('RSA')).length;
+  const unassignedCount = sshKeysList.filter(k => k.status === 'unassigned').length;
+
+  return `
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Card 1: Total Public Keys -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="key" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Authorized
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Registered SSH Keys
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              ${sshKeysList.length}
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              User & Deploy Keys
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Automated cloud-init root injection
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Modern ED25519 Standard -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            Recommended
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            ED25519 Curve Keys
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              ${edCount}
+            </span>
+            <span class="text-xs font-mono text-blue-600 dark:text-blue-400">
+              High Performance
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Fastest handshake & maximum collision resistance
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: RSA Compatibility Keys -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="lock" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+            Legacy 4096-bit
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            RSA 4096 Keys
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              ${rsaCount}
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Compatible
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            All RSA keys meet &gt;= 4096-bit security threshold
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Unassigned / Orphan Keys -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="unlink" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium ${unassignedCount > 0 ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'}">
+            ${unassignedCount > 0 ? 'Unassigned' : 'Clean'}
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Unattached Keys
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              ${unassignedCount}
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Not deployed
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Available for assignment to new VPS hosts
+          </div>
+        </div>
+      </div>
+
+    </div>
+  `;
+}
+
+function getSshTableHTML(keys, curFilter, curSearch) {
+  const allCount = sshKeysList.length;
+  const edCount = sshKeysList.filter(k => k.type === 'ED25519').length;
+  const rsaCount = sshKeysList.filter(k => k.type.includes('RSA')).length;
+  const unassignedCount = sshKeysList.filter(k => k.status === 'unassigned').length;
+
+  return `
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm overflow-hidden">
+      
+      <!-- Table Controls Bar -->
+      <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+          <button 
+            type="button" 
+            data-ssh-filter="all"
+            class="ssh-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${curFilter === 'all' ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60'}"
+          >
+            All Keys (${allCount})
+          </button>
+          <button 
+            type="button" 
+            data-ssh-filter="ed25519"
+            class="ssh-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${curFilter === 'ed25519' ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60'}"
+          >
+            ED25519 (${edCount})
+          </button>
+          <button 
+            type="button" 
+            data-ssh-filter="rsa"
+            class="ssh-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${curFilter === 'rsa' ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60'}"
+          >
+            RSA (${rsaCount})
+          </button>
+          <button 
+            type="button" 
+            data-ssh-filter="unassigned"
+            class="ssh-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors ${curFilter === 'unassigned' ? 'bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold' : 'text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60'}"
+          >
+            Unassigned (${unassignedCount})
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="flex items-center gap-3">
+          <div class="relative flex-1 sm:w-64">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="ssh-search-input"
+              value="${curSearch}"
+              placeholder="Search key name, fingerprint..." 
+              class="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Data Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-950/40 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+              <th class="py-3 px-4 sm:px-6">Key Name</th>
+              <th class="py-3 px-4">Algorithm</th>
+              <th class="py-3 px-4">Fingerprint (SHA-256)</th>
+              <th class="py-3 px-4">Attached Servers</th>
+              <th class="py-3 px-4">Created Date</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 sm:px-6 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 font-sans">
+            ${keys.length === 0 ? `
+              <tr>
+                <td colspan="7" class="py-12 text-center text-zinc-500">
+                  <div class="flex flex-col items-center justify-center">
+                    <i data-lucide="key" class="w-8 h-8 text-zinc-300 dark:text-zinc-600 mb-2"></i>
+                    <p class="text-sm font-medium text-zinc-900 dark:text-white">No SSH keys found</p>
+                    <p class="text-xs text-zinc-400 mt-1">Try modifying your filter or search terms.</p>
+                  </div>
+                </td>
+              </tr>
+            ` : keys.map(k => {
+              // Status: plain text, colored, no background pill
+              let statusText = '';
+              if (k.status === 'active') {
+                statusText = `<span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>`;
+              } else {
+                statusText = `<span class="text-xs font-mono font-semibold text-zinc-400">Unassigned</span>`;
+              }
+
+              return `
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Key Name & Comment -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      ${k.name}
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-xs">
+                      ${k.comment}
+                    </div>
+                  </td>
+
+                  <!-- Algorithm (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    ${k.type}
+                  </td>
+
+                  <!-- Fingerprint -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-600 dark:text-zinc-400 truncate max-w-xs">
+                    ${k.fingerprint}
+                  </td>
+
+                  <!-- Attached Servers (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">${k.attachedServers.length}</span> servers
+                  </td>
+
+                  <!-- Created Date -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    ${k.createdAt}
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    ${statusText}
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="ssh-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-ssh-id="${k.id}"
+                        title="View Public Key & Attached Hosts"
+                      >
+                        Inspect
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="ssh-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-ssh-id="${k.id}"
+                        title="Delete SSH Key"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              `;
+            }).join('')}
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination / Footer Bar -->
+      <div class="p-4 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-zinc-500">
+        <div>
+          Showing <span class="text-zinc-900 dark:text-white font-semibold">${keys.length}</span> of ${allCount} keys
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-400 hover:text-white disabled:opacity-40" disabled>
+            Prev
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-black font-bold">
+            1
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            2
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+  `;
+}
+
+function getSshDetailsDrawerHTML() {
+  return `
+    <div id="ssh-details-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-all duration-300">
+      <!-- Backdrop -->
+      <div id="ssh-details-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+      
+      <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+        <div class="w-screen max-w-lg bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto custom-scrollbar">
+          
+          <div>
+            <!-- Drawer Header -->
+            <div class="flex items-start justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="drawer-ssh-type" class="text-xs font-mono font-medium text-zinc-600 dark:text-zinc-300">ED25519</span>
+                  <span id="drawer-ssh-status" class="text-xs font-mono font-semibold text-emerald-500">Active</span>
+                </div>
+                <h3 id="drawer-ssh-name" class="text-lg font-bold font-display text-zinc-900 dark:text-white mt-1">devops-lead-ed25519</h3>
+                <p id="drawer-ssh-comment" class="text-xs font-mono text-zinc-400 mt-0.5">devops@hostlab.cloud</p>
+              </div>
+              <button type="button" id="close-ssh-drawer-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="mt-6 space-y-4">
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  KEY PROPERTIES
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">ALGORITHM TYPE</span>
+                    <span id="drawer-ssh-algo" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">ED25519</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">ATTACHED SERVERS</span>
+                    <span id="drawer-ssh-servers-count" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">3 servers</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">REGISTERED ON</span>
+                    <span id="drawer-ssh-created" class="font-mono text-zinc-800 dark:text-zinc-200">2024-01-10</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">LAST ACCESS</span>
+                    <span id="drawer-ssh-lastused" class="font-mono text-zinc-800 dark:text-zinc-200">2 hours ago</span>
+                  </div>
+                </div>
+
+                <div class="pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60">
+                  <span class="text-zinc-400 block text-[11px]">SHA-256 FINGERPRINT</span>
+                  <span id="drawer-ssh-fingerprint" class="font-mono text-xs text-zinc-600 dark:text-zinc-400 break-all">SHA256:mK9p+vB8x1Z3Lq4Y7wT0rE2uI5oP8sD1fG3hJ5kL7mN</span>
+                </div>
+              </div>
+
+              <!-- Public Key Code Box with Copy Button -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                    PUBLIC KEY
+                  </span>
+                  <button 
+                    type="button" 
+                    id="drawer-copy-ssh-btn"
+                    class="text-xs font-mono text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white flex items-center gap-1 cursor-pointer"
+                  >
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    <span id="drawer-copy-label">Copy Key</span>
+                  </button>
+                </div>
+                <textarea 
+                  id="drawer-ssh-key-textarea"
+                  readonly
+                  rows="4"
+                  class="w-full p-2.5 text-xs font-mono bg-zinc-100 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-800 dark:text-zinc-300 select-all focus:outline-none custom-scrollbar"
+                ></textarea>
+              </div>
+
+              <!-- Attached Servers List -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  DEPLOYED ON INSTANCES
+                </div>
+                <div id="drawer-ssh-attached-list" class="space-y-1 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drawer Footer Actions -->
+          <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end">
+            <button 
+              type="button" 
+              id="drawer-ssh-done-btn"
+              class="px-4 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function getAddSshKeyModalHTML() {
+  return `
+    <div id="add-ssh-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-200">
+      <div class="relative w-full max-w-lg rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 shadow-2xl space-y-5">
+        
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+          <div>
+            <h3 class="text-lg font-bold font-display text-zinc-900 dark:text-white">
+              Add New SSH Key
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+              Paste an OpenSSH public key for passwordless root & sudo authentication.
+            </p>
+          </div>
+          <button 
+            type="button" 
+            id="close-add-ssh-modal-btn"
+            class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Form Body -->
+        <form id="add-ssh-form" class="space-y-4">
+          
+          <!-- Key Name -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              KEY IDENTIFIER NAME
+            </label>
+            <input 
+              type="text" 
+              id="modal-ssh-name-input"
+              required
+              placeholder="e.g. dev-laptop-ed25519"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+
+          <!-- Public Key Textarea -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              PUBLIC KEY CONTENT (OpenSSH FORMAT)
+            </label>
+            <textarea 
+              id="modal-ssh-content-input"
+              required
+              rows="4"
+              placeholder="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5... user@domain"
+              class="w-full p-2.5 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono custom-scrollbar"
+            ></textarea>
+          </div>
+
+          <!-- Target Server Initial Attachment (Optional) -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              INITIAL SERVER ATTACHMENT (OPTIONAL)
+            </label>
+            <select 
+              id="modal-ssh-server-select"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+            >
+              <option value="none">None (Keep Unassigned)</option>
+              <option value="prod-api-cluster-01">prod-api-cluster-01 (Frankfurt)</option>
+              <option value="db-master-postgres">db-master-postgres (Frankfurt)</option>
+              <option value="redis-cache-iad">redis-cache-iad (Ashburn / VA)</option>
+              <option value="analytics-k8s-node-03">analytics-k8s-node-03 (Singapore)</option>
+            </select>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end gap-2">
+            <button 
+              type="button" 
+              id="cancel-add-ssh-btn"
+              class="px-3.5 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              class="px-4 py-2 text-xs font-mono font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+            >
+              Add SSH Key
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  `;
+}
+
+// ==========================================
+// 3. MAIN MODULE RENDERER
+// ==========================================
+
+export function renderSshKeysHTML() {
+  const filtered = getFilteredSshKeys();
+
+  return `
+    <div class="space-y-6 max-w-7xl mx-auto">
+      
+      <!-- Module Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-zinc-200 dark:border-zinc-800/80">
+        <div>
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+            VPS INSTANCES / SSH KEYS
+          </div>
+          <h1 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-1">
+            SSH Access Keys
+          </h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+            Authorized OpenSSH public keys, cloud-init credential provisioning, and server access governance.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-add-ssh-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black text-xs font-mono font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>Add SSH Key</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. Top KPI Metrics -->
+      ${getSshStatsCardsHTML()}
+
+      <!-- 2. Interactive Data Table -->
+      <div id="ssh-table-container">
+        ${getSshTableHTML(filtered, currentFilter, currentSearch)}
+      </div>
+
+      <!-- 3. Add SSH Key Modal -->
+      ${getAddSshKeyModalHTML()}
+
+      <!-- 4. Slide-over Details Drawer -->
+      ${getSshDetailsDrawerHTML()}
+
+    </div>
+  `;
+}
+
+// ==========================================
+// 4. EVENT BINDINGS & LIFECYCLE
+// ==========================================
+
+export function setupSshKeysEvents(onNavigate) {
+  createIcons({ icons });
+
+  const tableContainer = document.getElementById('ssh-table-container');
+  const drawer = document.getElementById('ssh-details-drawer');
+  const closeDrawerBtn = document.getElementById('close-ssh-drawer-btn');
+  const drawerDoneBtn = document.getElementById('drawer-ssh-done-btn');
+  const drawerBackdrop = document.getElementById('ssh-details-backdrop');
+
+  const closeDrawer = () => {
+    if (drawer) drawer.classList.add('hidden');
+  };
+
+  if (closeDrawerBtn) closeDrawerBtn.onclick = closeDrawer;
+  if (drawerDoneBtn) drawerDoneBtn.onclick = closeDrawer;
+  if (drawerBackdrop) drawerBackdrop.onclick = closeDrawer;
+  if (drawer) {
+    drawer.onclick = (e) => {
+      const panel = drawer.querySelector('.w-screen');
+      if (panel && !panel.contains(e.target)) closeDrawer();
+    };
+  }
+
+  const openDrawer = (key) => {
+    if (!drawer) return;
+    const tpEl = document.getElementById('drawer-ssh-type');
+    const stEl = document.getElementById('drawer-ssh-status');
+    const nmEl = document.getElementById('drawer-ssh-name');
+    const cmEl = document.getElementById('drawer-ssh-comment');
+    const alEl = document.getElementById('drawer-ssh-algo');
+    const svEl = document.getElementById('drawer-ssh-servers-count');
+    const crEl = document.getElementById('drawer-ssh-created');
+    const luEl = document.getElementById('drawer-ssh-lastused');
+    const fpEl = document.getElementById('drawer-ssh-fingerprint');
+    const txEl = document.getElementById('drawer-ssh-key-textarea');
+    const listEl = document.getElementById('drawer-ssh-attached-list');
+    const copyBtn = document.getElementById('drawer-copy-ssh-btn');
+    const copyLabel = document.getElementById('drawer-copy-label');
+
+    if (tpEl) tpEl.textContent = key.type;
+    if (stEl) {
+      if (key.status === 'active') {
+        stEl.textContent = 'Active';
+        stEl.className = 'text-xs font-mono font-semibold text-emerald-500';
+      } else {
+        stEl.textContent = 'Unassigned';
+        stEl.className = 'text-xs font-mono font-semibold text-zinc-400';
+      }
+    }
+
+    if (nmEl) nmEl.textContent = key.name;
+    if (cmEl) cmEl.textContent = key.comment;
+    if (alEl) alEl.textContent = key.type;
+    if (svEl) svEl.textContent = `${key.attachedServers.length} servers`;
+    if (crEl) crEl.textContent = key.createdAt;
+    if (luEl) luEl.textContent = key.lastUsed;
+    if (fpEl) fpEl.textContent = key.fingerprint;
+    if (txEl) txEl.value = key.publicKey;
+
+    if (listEl) {
+      if (key.attachedServers.length === 0) {
+        listEl.innerHTML = `<span class="text-zinc-400">Not currently attached to any instances.</span>`;
+      } else {
+        listEl.innerHTML = key.attachedServers.map(srv => `
+          <div class="flex items-center gap-1.5 py-0.5">
+            <i data-lucide="server" class="w-3.5 h-3.5 text-zinc-400"></i>
+            <span>${srv}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    if (copyBtn && copyLabel && txEl) {
+      copyBtn.onclick = () => {
+        navigator.clipboard.writeText(key.publicKey).then(() => {
+          copyLabel.textContent = 'Copied!';
+          setTimeout(() => {
+            copyLabel.textContent = 'Copy Key';
+          }, 1500);
+        }).catch(() => {
+          txEl.select();
+        });
+      };
+    }
+
+    drawer.classList.remove('hidden');
+    createIcons({ icons });
+  };
+
+  const refreshTable = () => {
+    if (tableContainer) {
+      const filtered = getFilteredSshKeys();
+      tableContainer.innerHTML = getSshTableHTML(filtered, currentFilter, currentSearch);
+      createIcons({ icons });
+      attachTableEvents();
+    }
+  };
+
+  const attachTableEvents = () => {
+    // Filter Tabs
+    const filterBtns = document.querySelectorAll('.ssh-filter-btn');
+    filterBtns.forEach(btn => {
+      btn.onclick = () => {
+        currentFilter = btn.getAttribute('data-ssh-filter') || 'all';
+        refreshTable();
+      };
+    });
+
+    // Search Input
+    const searchInput = document.getElementById('ssh-search-input');
+    if (searchInput) {
+      searchInput.oninput = (e) => {
+        currentSearch = e.target.value;
+        refreshTable();
+      };
+    }
+
+    // Inspect
+    const inspectBtns = document.querySelectorAll('.ssh-inspect-btn');
+    inspectBtns.forEach(btn => {
+      btn.onclick = () => {
+        const id = btn.getAttribute('data-ssh-id');
+        const item = sshKeysList.find(k => k.id === id);
+        if (item) openDrawer(item);
+      };
+    });
+
+    // Delete
+    const deleteBtns = document.querySelectorAll('.ssh-delete-btn');
+    deleteBtns.forEach(btn => {
+      btn.onclick = () => {
+        const id = btn.getAttribute('data-ssh-id');
+        const item = sshKeysList.find(k => k.id === id);
+        if (item && confirm(`Permanently remove SSH key "${item.name}"?`)) {
+          sshKeysList = sshKeysList.filter(k => k.id !== id);
+          refreshTable();
+        }
+      };
+    });
+  };
+
+  attachTableEvents();
+
+  // Add SSH Key Modal logic
+  const addModal = document.getElementById('add-ssh-modal');
+  const openAddBtn = document.getElementById('open-add-ssh-btn');
+  const closeAddBtn = document.getElementById('close-add-ssh-modal-btn');
+  const cancelAddBtn = document.getElementById('cancel-add-ssh-btn');
+  const addForm = document.getElementById('add-ssh-form');
+
+  if (openAddBtn && addModal) {
+    openAddBtn.onclick = () => addModal.classList.remove('hidden');
+  }
+
+  const closeAdd = () => {
+    if (addModal) addModal.classList.add('hidden');
+    if (addForm) addForm.reset();
+  };
+
+  if (closeAddBtn) closeAddBtn.onclick = closeAdd;
+  if (cancelAddBtn) cancelAddBtn.onclick = closeAdd;
+
+  if (addForm) {
+    addForm.onsubmit = (e) => {
+      e.preventDefault();
+      const name = document.getElementById('modal-ssh-name-input')?.value.trim();
+      const content = document.getElementById('modal-ssh-content-input')?.value.trim();
+      const server = document.getElementById('modal-ssh-server-select')?.value || 'none';
+
+      if (!name || !content) return;
+
+      const isEd = content.includes('ssh-ed25519');
+      const isRsa = content.includes('ssh-rsa');
+      const type = isEd ? 'ED25519' : isRsa ? 'RSA 4096' : 'OpenSSH Key';
+      const parts = content.split(' ');
+      const comment = parts.length > 2 ? parts[2] : 'user@hostlab';
+      const attached = server !== 'none' ? [server] : [];
+
+      const newKey = {
+        id: `ssh-${Date.now()}`,
+        name,
+        type,
+        fingerprint: `SHA256:${Math.random().toString(36).substring(2, 15)}+${Math.random().toString(36).substring(2, 15)}`,
+        publicKey: content,
+        comment,
+        attachedServers: attached,
+        createdAt: new Date().toISOString().split('T')[0],
+        lastUsed: 'Never',
+        status: attached.length > 0 ? 'active' : 'unassigned'
+      };
+
+      sshKeysList.unshift(newKey);
+      closeAdd();
+      refreshTable();
+    };
+  }
+}
+
+export function cleanupSshKeys() {
+  currentFilter = 'all';
+  currentSearch = '';
+}
