@@ -2,7 +2,7 @@ import '../../style.css';
 import { initTheme } from '../../components/Navbar.js';
 import { getSidebarHTML, setupSidebarEvents } from './Sidebar.js';
 import { getTopbarHTML, setupTopbarEvents } from './Topbar.js';
-import { renderModuleContent, setupModuleEvents } from './modules/moduleRouter.js';
+import { renderUserModuleHTML, setupUserModuleEvents } from './modules.js';
 import { createIcons, icons } from 'lucide';
 
 // Initialize Theme
@@ -50,7 +50,7 @@ if (app) {
 
           <!-- Scrollable Main Content Area -->
           <main id="user-content-root" class="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 bg-[#f4f4f5] dark:bg-[#09090b] custom-scrollbar">
-            ${renderModuleContent(navState.activeParent, navState.activeSub)}
+            ${renderUserModuleHTML(navState.activeParent)}
           </main>
 
         </div>
@@ -75,7 +75,7 @@ if (app) {
       }
     );
 
-    setupModuleEvents(
+    setupUserModuleEvents(
       navState, 
       (newState) => {
         navState = newState;

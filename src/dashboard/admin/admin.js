@@ -2,7 +2,7 @@ import '../../style.css';
 import { initTheme } from '../../components/Navbar.js';
 import { getSidebarHTML, setupSidebarEvents } from './Sidebar.js';
 import { getTopbarHTML, setupTopbarEvents } from './Topbar.js';
-import { renderModuleContent, setupModuleEvents } from './modules/moduleRouter.js';
+import { renderAdminModuleHTML, setupAdminModuleEvents } from './modules.js';
 import { createIcons, icons } from 'lucide';
 
 // Initialize Theme
@@ -48,7 +48,7 @@ if (app) {
 
           <!-- Scrollable Main Content Area -->
           <main id="admin-content-root" class="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 bg-[#f4f4f5] dark:bg-[#09090b] custom-scrollbar">
-            ${renderModuleContent(navState.activeParent, navState.activeSub)}
+            ${renderAdminModuleHTML(navState.activeParent, navState.activeSub)}
           </main>
 
         </div>
@@ -75,10 +75,17 @@ if (app) {
       });
     }
 
-    setupModuleEvents(navState.activeParent, navState.activeSub, (newState) => {
-      navState = { ...navState, ...newState, isMobileOpen: false };
-      render();
-    });
+    setupAdminModuleEvents(
+      navState.activeParent, 
+      navState.activeSub, 
+      (newState) => {
+        navState = { ...navState, ...newState, isMobileOpen: false };
+        render();
+      },
+      () => {
+        render();
+      }
+    );
 
     createIcons({ icons });
   };
