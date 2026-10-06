@@ -10,13 +10,14 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        hosting: resolve(__dirname, 'hosting.html'),
-        vps: resolve(__dirname, 'vps-hosting.html'),
-        domains: resolve(__dirname, 'domains.html'),
-        email: resolve(__dirname, 'business-email.html'),
-        contact: resolve(__dirname, 'contact.html'),
-        admin: resolve(__dirname, 'admin.html'),
+        main: resolve(import.meta.dirname, 'index.html'),
+        hosting: resolve(import.meta.dirname, 'hosting.html'),
+        vps: resolve(import.meta.dirname, 'vps-hosting.html'),
+        domains: resolve(import.meta.dirname, 'domains.html'),
+        email: resolve(import.meta.dirname, 'business-email.html'),
+        contact: resolve(import.meta.dirname, 'contact.html'),
+        admin: resolve(import.meta.dirname, 'admin.html'),
+        dashboard: resolve(import.meta.dirname, 'dashboard.html'),
       },
     },
   },

@@ -1,0 +1,70 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar (NO CARDS OVERVIEW) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Settings
+          </h1>
+          <p class="text-xs text-zinc-500 mt-1">
+            Global system configuration and platform preferences.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <button 
+            type="button" 
+            id="save-all-settings-btn"
+            class="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="check" class="w-4 h-4"></i>
+            <span id="save-btn-text">Save Changes</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Segmented Tab Navigation -->
+      <div class="flex items-center gap-1 border-b border-zinc-200 dark:border-zinc-800 overflow-x-auto pb-px">
+        <button 
+          type="button" 
+          data-tab="general"
+          class="settings-tab-btn px-4 py-2.5 text-xs font-medium border-b-2 transition-all cursor-pointer whitespace-nowrap border-zinc-900 dark:border-white text-zinc-900 dark:text-white font-semibold"
+        >
+          General
+        </button>
+        <button 
+          type="button" 
+          data-tab="security"
+          class="settings-tab-btn px-4 py-2.5 text-xs font-medium border-b-2 transition-all cursor-pointer whitespace-nowrap border-transparent text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+        >
+          Security & Access
+        </button>
+        <button 
+          type="button" 
+          data-tab="billing"
+          class="settings-tab-btn px-4 py-2.5 text-xs font-medium border-b-2 transition-all cursor-pointer whitespace-nowrap border-transparent text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+        >
+          Billing & Gateways
+        </button>
+        <button 
+          type="button" 
+          data-tab="email"
+          class="settings-tab-btn px-4 py-2.5 text-xs font-medium border-b-2 transition-all cursor-pointer whitespace-nowrap border-transparent text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+        >
+          Email & Alerts
+        </button>
+        <button 
+          type="button" 
+          data-tab="api"
+          class="settings-tab-btn px-4 py-2.5 text-xs font-medium border-b-2 transition-all cursor-pointer whitespace-nowrap border-transparent text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+        >
+          API & Webhooks
+        </button>
+      </div>
+
+      <!-- Tab Content Area -->
+      <div id="settings-tab-container">
+        <!-- Rendered via JS -->
+      </div>
+
+    </div>

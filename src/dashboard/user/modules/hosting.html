@@ -1,0 +1,404 @@
+<div class="space-y-6">
+      
+      <!-- 1. Header: Exact Admin Style -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-2xl font-bold text-zinc-900 dark:text-white font-display tracking-tight">
+              Web Hosting
+            </h1>
+          </div>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            Manage your websites, SFTP credentials, databases, and automated backups.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="deploy-site-btn"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-black hover:bg-zinc-200 text-xs font-semibold shadow-sm transition-colors cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Deploy Site</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Stat Cards: Exact Admin Style -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Total Sites -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="globe" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              Hosted Websites
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                3
+              </span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              All 3 sites active &amp; monitored
+            </div>
+          </div>
+        </div>
+
+        <!-- Storage Used -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="hard-drive" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              NVMe Storage
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                48.4 GB
+              </span>
+              <span class="text-xs font-mono text-zinc-500">/ 160 GB</span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              30% allocation quota
+            </div>
+          </div>
+        </div>
+
+        <!-- Bandwidth -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="activity" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              Monthly Bandwidth
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                142.8 GB
+              </span>
+              <span class="text-xs font-mono text-zinc-500">/ 1,000 GB</span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              FastCGI edge cache enabled
+            </div>
+          </div>
+        </div>
+
+        <!-- SSL Coverage -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="shield-check" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              SSL Certificates
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                3 / 3
+              </span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              Auto-renewing Let's Encrypt
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3. Sites Table: Exact Admin Style -->
+      <div class="rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm overflow-hidden">
+        
+        <!-- Controls Bar -->
+        <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          
+          <!-- Filter Tabs -->
+          <div class="flex items-center gap-1.5">
+            <button 
+              type="button" 
+              data-site-filter="all"
+              class="px-3 py-1.5 rounded-md text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold"
+            >
+              All Sites (3)
+            </button>
+            <button 
+              type="button" 
+              data-site-filter="active"
+              class="px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+            >
+              Active (3)
+            </button>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative sm:w-64">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="user-sites-search"
+              value=""
+              placeholder="Search domain or runtime..." 
+              class="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-sans"
+            />
+          </div>
+
+        </div>
+
+        <!-- Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-950/40 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+                <th class="py-3 px-4 sm:px-6">Website / Domain</th>
+                <th class="py-3 px-4">Runtime &amp; Application</th>
+                <th class="py-3 px-4">Server Node</th>
+                <th class="py-3 px-4">Storage</th>
+                <th class="py-3 px-4">Bandwidth</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4 sm:px-6 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 font-sans">
+              
+                <tr class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain & SSL -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2.5">
+                      <div class="font-semibold text-zinc-900 dark:text-white text-xs">
+                        thorneventures.io
+                      </div>
+                      <a 
+                        href="https://thorneventures.io" 
+                        target="_blank" 
+                        class="text-zinc-400 hover:text-white transition-colors"
+                        title="Visit site"
+                      >
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
+                      </a>
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      Auto-renewing (Let's Encrypt)
+                    </div>
+                  </td>
+
+                  <!-- Runtime -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-800 dark:text-zinc-200">
+                      WordPress Managed
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      PHP 8.3
+                    </div>
+                  </td>
+
+                  <!-- Server -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-600 dark:text-zinc-400">
+                    <div>194.38.12.84</div>
+                    <div class="text-[11px] text-zinc-500">Frankfurt FRA-1</div>
+                  </td>
+
+                  <!-- Storage -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    8.4 GB
+                  </td>
+
+                  <!-- Bandwidth -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    42.1 GB
+                  </td>
+
+                  <!-- Status -->
+                  <td class="py-3.5 px-4">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Active
+                    </span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right">
+                    <div class="inline-flex items-center gap-2">
+                      <button 
+                        type="button" 
+                        data-manage-site="site_1"
+                        class="px-3 py-1.5 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                      >
+                        Manage →
+                      </button>
+                    </div>
+                  </td>
+
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain & SSL -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2.5">
+                      <div class="font-semibold text-zinc-900 dark:text-white text-xs">
+                        api.thorne.dev
+                      </div>
+                      <a 
+                        href="https://api.thorne.dev" 
+                        target="_blank" 
+                        class="text-zinc-400 hover:text-white transition-colors"
+                        title="Visit site"
+                      >
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
+                      </a>
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      Hostlab Edge SSL
+                    </div>
+                  </td>
+
+                  <!-- Runtime -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-800 dark:text-zinc-200">
+                      Node.js Container
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      Node 20 LTS
+                    </div>
+                  </td>
+
+                  <!-- Server -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-600 dark:text-zinc-400">
+                    <div>194.38.12.84</div>
+                    <div class="text-[11px] text-zinc-500">Frankfurt FRA-1</div>
+                  </td>
+
+                  <!-- Storage -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    2.1 GB
+                  </td>
+
+                  <!-- Bandwidth -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    89.6 GB
+                  </td>
+
+                  <!-- Status -->
+                  <td class="py-3.5 px-4">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Active
+                    </span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right">
+                    <div class="inline-flex items-center gap-2">
+                      <button 
+                        type="button" 
+                        data-manage-site="site_2"
+                        class="px-3 py-1.5 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                      >
+                        Manage →
+                      </button>
+                    </div>
+                  </td>
+
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain & SSL -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="flex items-center gap-2.5">
+                      <div class="font-semibold text-zinc-900 dark:text-white text-xs">
+                        staging.clientflow.co
+                      </div>
+                      <a 
+                        href="https://staging.clientflow.co" 
+                        target="_blank" 
+                        class="text-zinc-400 hover:text-white transition-colors"
+                        title="Visit site"
+                      >
+                        <i data-lucide="external-link" class="w-3 h-3"></i>
+                      </a>
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      Auto-renewing (Let's Encrypt)
+                    </div>
+                  </td>
+
+                  <!-- Runtime -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-800 dark:text-zinc-200">
+                      PHP / Laravel
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      PHP 8.3
+                    </div>
+                  </td>
+
+                  <!-- Server -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-600 dark:text-zinc-400">
+                    <div>64.227.41.119</div>
+                    <div class="text-[11px] text-zinc-500">US East IAD-1</div>
+                  </td>
+
+                  <!-- Storage -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    37.9 GB
+                  </td>
+
+                  <!-- Bandwidth -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    11.1 GB
+                  </td>
+
+                  <!-- Status -->
+                  <td class="py-3.5 px-4">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-mono text-emerald-600 dark:text-emerald-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                      Active
+                    </span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right">
+                    <div class="inline-flex items-center gap-2">
+                      <button 
+                        type="button" 
+                        data-manage-site="site_3"
+                        class="px-3 py-1.5 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                      >
+                        Manage →
+                      </button>
+                    </div>
+                  </td>
+
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- 4. Real Web Hosting Management Drawer (Closes on outside click) -->
+      
+
+      <!-- 5. Deploy New Site Modal (Closes on outside click) -->
+      
+
+    </div>

@@ -1,0 +1,350 @@
+<div class="space-y-6">
+      
+      <!-- 1. Header: Exact Admin Style -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-200 dark:border-zinc-800">
+        <div>
+          <div class="flex items-center gap-2">
+            <h1 class="text-2xl font-bold text-zinc-900 dark:text-white font-display tracking-tight">
+              Support Tickets
+            </h1>
+          </div>
+          <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-1">
+            Direct priority communication with Hostlab technical engineering and support specialists.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-ticket-btn"
+            class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-white text-black hover:bg-zinc-200 text-xs font-semibold shadow-sm transition-colors cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Open New Ticket</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. Stat Cards: Exact Admin Style -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- Active Tickets -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="life-buoy" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              Active Tickets
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                1
+              </span>
+              <span class="text-xs font-mono text-blue-500 font-medium">Answered</span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              Awaiting customer verification
+            </div>
+          </div>
+        </div>
+
+        <!-- Resolved -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="check-circle" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              Resolved Cases
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                2
+              </span>
+              <span class="text-xs font-mono text-emerald-500 font-medium">Settled</span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              100% satisfaction rating
+            </div>
+          </div>
+        </div>
+
+        <!-- Average Response Time -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="clock" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              Avg First Response
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                14 mins
+              </span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              Priority SLA guarantee active
+            </div>
+          </div>
+        </div>
+
+        <!-- Support Tier -->
+        <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+          <div class="flex items-start">
+            <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+              <i data-lucide="shield" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="mt-4">
+            <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+              Support Coverage
+            </div>
+            <div class="mt-1 flex items-baseline gap-2">
+              <span class="text-xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+                24/7/365
+              </span>
+            </div>
+            <div class="mt-2 text-xs text-zinc-500 truncate">
+              Developer Pro Dedicated Queue
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 3. Tickets Table: Exact Admin Style -->
+      <div class="rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm overflow-hidden">
+        
+        <!-- Controls Bar -->
+        <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          
+          <!-- Filter Tabs -->
+          <div class="flex items-center gap-1.5 overflow-x-auto pb-1 sm:pb-0">
+            <button 
+              type="button" 
+              data-ticket-filter="all"
+              class="px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold"
+            >
+              All Tickets (3)
+            </button>
+            <button 
+              type="button" 
+              data-ticket-filter="open"
+              class="px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+            >
+              Open (1)
+            </button>
+            <button 
+              type="button" 
+              data-ticket-filter="resolved"
+              class="px-3 py-1.5 rounded-md text-xs font-medium transition-colors cursor-pointer text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+            >
+              Resolved (2)
+            </button>
+          </div>
+
+          <!-- Search Input -->
+          <div class="relative w-full sm:w-64">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="user-ticket-search"
+              value=""
+              placeholder="Search ticket ID, subject..." 
+              class="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+
+        </div>
+
+        <!-- Table Data -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-950/40 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+                <th class="py-3 px-4 sm:px-6">Ticket ID &amp; Subject</th>
+                <th class="py-3 px-4">Department / Service</th>
+                <th class="py-3 px-4">Priority</th>
+                <th class="py-3 px-4">Last Updated</th>
+                <th class="py-3 px-4">Status</th>
+                <th class="py-3 px-4 sm:px-6 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 font-sans">
+              
+                <tr class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- ID & Subject -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-semibold text-zinc-900 dark:text-white text-xs">
+                      Increase PHP OPcache memory limit on thorneventures.io
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      TICK-4910
+                    </div>
+                  </td>
+
+                  <!-- Department & Service -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    <div>Technical Support</div>
+                    <div class="text-[11px] text-zinc-500">thorneventures.io (Web Hosting)</div>
+                  </td>
+
+                  <!-- Priority -->
+                  <td class="py-3.5 px-4 font-mono">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] bg-zinc-100 dark:bg-zinc-800 text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+                      Normal
+                    </span>
+                  </td>
+
+                  <!-- Last Updated -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-600 dark:text-zinc-400">
+                    Yesterday at 4:15 PM
+                  </td>
+
+                  <!-- Status -->
+                  <td class="py-3.5 px-4">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-mono text-blue-500 dark:text-blue-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                      Answered
+                    </span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right">
+                    <button 
+                      type="button" 
+                      data-view-ticket="TICK-4910"
+                      class="px-3 py-1.5 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                    >
+                      View Thread →
+                    </button>
+                  </td>
+
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- ID & Subject -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-semibold text-zinc-900 dark:text-white text-xs">
+                      DNS reverse lookup (rDNS) PTR record for vps-prod-frankfurt
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      TICK-4822
+                    </div>
+                  </td>
+
+                  <!-- Department & Service -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    <div>Technical Support</div>
+                    <div class="text-[11px] text-zinc-500">vps-prod-frankfurt (194.38.12.84)</div>
+                  </td>
+
+                  <!-- Priority -->
+                  <td class="py-3.5 px-4 font-mono">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] bg-zinc-100 dark:bg-zinc-800 text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+                      Normal
+                    </span>
+                  </td>
+
+                  <!-- Last Updated -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-600 dark:text-zinc-400">
+                    Sep 24, 2026
+                  </td>
+
+                  <!-- Status -->
+                  <td class="py-3.5 px-4">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-mono text-zinc-500">
+                      <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                      Resolved
+                    </span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right">
+                    <button 
+                      type="button" 
+                      data-view-ticket="TICK-4822"
+                      class="px-3 py-1.5 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                    >
+                      View Thread →
+                    </button>
+                  </td>
+
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/70 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- ID & Subject -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-semibold text-zinc-900 dark:text-white text-xs">
+                      Inquiry regarding annual prepayment discount
+                    </div>
+                    <div class="text-[11px] font-mono text-zinc-400 mt-0.5">
+                      TICK-4705
+                    </div>
+                  </td>
+
+                  <!-- Department & Service -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-700 dark:text-zinc-300">
+                    <div>Billing & Invoicing</div>
+                    <div class="text-[11px] text-zinc-500">Account Billing</div>
+                  </td>
+
+                  <!-- Priority -->
+                  <td class="py-3.5 px-4 font-mono">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] bg-zinc-100 dark:bg-zinc-800 text-zinc-400 border border-zinc-200 dark:border-zinc-700">
+                      Low
+                    </span>
+                  </td>
+
+                  <!-- Last Updated -->
+                  <td class="py-3.5 px-4 font-mono text-zinc-600 dark:text-zinc-400">
+                    Aug 18, 2026
+                  </td>
+
+                  <!-- Status -->
+                  <td class="py-3.5 px-4">
+                    <span class="inline-flex items-center gap-1.5 text-xs font-mono text-zinc-500">
+                      <span class="w-1.5 h-1.5 rounded-full bg-zinc-500"></span>
+                      Resolved
+                    </span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right">
+                    <button 
+                      type="button" 
+                      data-view-ticket="TICK-4705"
+                      class="px-3 py-1.5 rounded bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                    >
+                      View Thread →
+                    </button>
+                  </td>
+
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+
+      </div>
+
+      <!-- 4. Ticket Conversation Thread Drawer -->
+      
+
+      <!-- 5. Open New Ticket Modal -->
+      
+
+    </div>

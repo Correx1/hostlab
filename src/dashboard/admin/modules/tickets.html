@@ -1,0 +1,227 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar (NO CARDS OVERVIEW) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Support Tickets
+          </h1>
+          <p class="text-xs text-zinc-500 mt-1">
+            Manage customer requests and technical support queue.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-create-ticket-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>New Ticket</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls & Tabs -->
+      <div class="space-y-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-2" id="ticket-filter-tabs">
+          <button 
+            type="button" 
+            data-filter="all" 
+            class="tck-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+          >
+            All Tickets (<span id="count-all">0</span>)
+          </button>
+          
+          <button 
+            type="button" 
+            data-filter="open" 
+            class="tck-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Open (<span id="count-open">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="in-progress" 
+            class="tck-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            In-Progress (<span id="count-inprogress">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="resolved" 
+            class="tck-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Resolved (<span id="count-resolved">0</span>)
+          </button>
+        </div>
+
+        <!-- Filter Search & Selectors -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="ticket-search-input"
+              value=""
+              placeholder="Search by ticket ID, subject, customer, or keyword..."
+              class="w-full pl-9 pr-4 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+            />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <select 
+              id="ticket-dept-select" 
+              class="text-xs px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white focus:outline-none"
+            >
+              <option value="all">All Departments</option>
+              <option value="Billing & Accounts" >Billing & Accounts</option><option value="Migration Support" >Migration Support</option><option value="Technical Ops" >Technical Ops</option>
+            </select>
+
+            <select 
+              id="ticket-priority-select" 
+              class="text-xs px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white focus:outline-none"
+            >
+              <option value="all">All Priorities</option>
+              <option value="critical">Critical</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Data Table -->
+      <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 text-zinc-500 font-mono text-[11px] uppercase tracking-wider">
+                <th class="py-3 px-4 font-medium">Ticket ID & Subject</th>
+                <th class="py-3 px-4 font-medium">Customer & Account</th>
+                <th class="py-3 px-4 font-medium">Department</th>
+                <th class="py-3 px-4 font-medium text-center">Priority</th>
+                <th class="py-3 px-4 font-medium">Last Activity</th>
+                <th class="py-3 px-4 font-medium text-center">Status</th>
+                <th class="py-3 px-4 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="ticket-table-body" class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty state container -->
+        <div id="tck-empty-state" class="hidden p-12 text-center">
+          <div class="inline-flex p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-3">
+            <i data-lucide="life-buoy" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">No support tickets found</h3>
+          <p class="text-xs text-zinc-500 max-w-sm mx-auto">
+            No tickets match your active filter parameters or search query.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <div id="ticket-drawer-container"></div>
+
+      <!-- Open Ticket Modal -->
+      <div id="create-ticket-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="life-buoy" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold font-display text-zinc-900 dark:text-white text-base">Open Technical Ticket</h3>
+            </div>
+            <button type="button" id="close-create-tck-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="create-ticket-form" class="p-6 space-y-4 text-xs">
+            
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Customer / Organization</label>
+              <input 
+                type="text" 
+                id="modal-tck-customer" 
+                placeholder="Sarah Jenkins (TechFlow Media LLC)" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Ticket Subject</label>
+              <input 
+                type="text" 
+                id="modal-tck-subject" 
+                placeholder="e.g. Reverse DNS PTR configuration request" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+              />
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Department</label>
+                <select id="modal-tck-dept" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                  <option value="Technical Ops">Technical Ops</option>
+                  <option value="Billing & Accounts">Billing & Accounts</option>
+                  <option value="Migration Support">Migration Support</option>
+                  <option value="Security & Abuse">Security & Abuse</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Priority</label>
+                <select id="modal-tck-priority" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                  <option value="low">Low</option>
+                  <option value="medium" selected>Medium</option>
+                  <option value="high">High</option>
+                  <option value="critical">Critical (P1)</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Initial Message / Case Details</label>
+              <textarea 
+                id="modal-tck-message" 
+                rows="4" 
+                placeholder="Detailed description of the issue or maintenance request..." 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none placeholder-zinc-400"
+              ></textarea>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-create-tck-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100"
+              >
+                Open Ticket
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>

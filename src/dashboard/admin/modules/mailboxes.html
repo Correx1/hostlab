@@ -1,0 +1,1153 @@
+<div class="space-y-6 max-w-7xl mx-auto">
+      
+      <!-- Module Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-zinc-200 dark:border-zinc-800/80">
+        <div>
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+            BUSINESS EMAIL / MAILBOXES
+          </div>
+          <h1 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-1">
+            Email Mailboxes
+          </h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+            Individual user mailboxes, quota allocation, password management, and webmail access.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-create-mbx-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black text-xs font-mono font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>Create Mailbox</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. Top KPI Metrics -->
+      
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Card 1: Active Inboxes -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="inbox" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            5 Active
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Provisioned Inboxes
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              2,840
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              User Accounts
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            2 near quota • 1 suspended
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Messages Hosted -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            Indexed
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Indexed Messages
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              14.2M
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Emails
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Full-text search index active (Apache Solr)
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Mail Storage Pool -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="hard-drive" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+            NVMe Maildir
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Storage Usage
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              18.4 TB
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Used
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Dovecot zlib gzip compression enabled
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Antispam Quality -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Rspamd Score
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Inbound Cleanliness
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              99.9%
+            </span>
+            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+              Spam-Free
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Bayesian neural network filter trained
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+
+      <!-- 2. Interactive Data Table -->
+      <div id="mbx-table-container">
+        
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm overflow-hidden">
+      
+      <!-- Table Controls Bar -->
+      <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+          <button 
+            type="button" 
+            data-mbx-filter="all"
+            class="mbx-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold"
+          >
+            All Inboxes (8)
+          </button>
+          <button 
+            type="button" 
+            data-mbx-filter="active"
+            class="mbx-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Active (5)
+          </button>
+          <button 
+            type="button" 
+            data-mbx-filter="warning"
+            class="mbx-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Near Quota (2)
+          </button>
+          <button 
+            type="button" 
+            data-mbx-filter="suspended"
+            class="mbx-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Suspended (1)
+          </button>
+        </div>
+
+        <!-- Search & Domain Filter -->
+        <div class="flex items-center gap-3">
+          <div class="relative flex-1 sm:w-60">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="mbx-search-input"
+              value=""
+              placeholder="Search email, name..." 
+              class="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+
+          <select 
+            id="mbx-domain-select"
+            class="px-2.5 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-500 font-mono"
+          >
+            <option value="all" selected>All Domains</option>
+            
+              <option value="techflow-media.com" >techflow-media.com</option>
+            
+              <option value="apexstudios.design" >apexstudios.design</option>
+            
+              <option value="greenleaf-organics.co.uk" >greenleaf-organics.co.uk</option>
+            
+              <option value="cryptotrack-api.io" >cryptotrack-api.io</option>
+            
+              <option value="novatech-solutions.ai" >novatech-solutions.ai</option>
+            
+              <option value="pulsecreative.de" >pulsecreative.de</option>
+            
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Data Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-950/40 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+              <th class="py-3 px-4 sm:px-6">Mailbox Email</th>
+              <th class="py-3 px-4">Display Name</th>
+              <th class="py-3 px-4">Domain</th>
+              <th class="py-3 px-4">Storage (NVMe)</th>
+              <th class="py-3 px-4">Messages</th>
+              <th class="py-3 px-4">Auto-Responder</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 sm:px-6 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 font-sans">
+            
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      sarah@techflow-media.com
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: 12 minutes ago
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Sarah Jenkins
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    techflow-media.com
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">4.1GB</span><span class="text-zinc-400">/10GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    8,420
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Disabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-301"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-301"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-301"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      info@techflow-media.com
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: 1 hour ago
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      TechFlow General Info
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    techflow-media.com
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">8.7GB</span><span class="text-zinc-400">/10GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    19,400
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-blue-500 font-medium">Enabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-amber-500 dark:text-amber-400">Near Quota</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-302"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-302"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-302"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      david@apexstudios.design
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: Just now
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      David Vance
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    apexstudios.design
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">18.0GB</span><span class="text-zinc-400">/24GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    14,200
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Disabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-303"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-303"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-303"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      billing@apexstudios.design
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: 3 hours ago
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Apex Studios Finance
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    apexstudios.design
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">6.1GB</span><span class="text-zinc-400">/15GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    4,100
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Disabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-304"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-304"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-304"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      emma@greenleaf-organics.co.uk
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: Yesterday
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Emma Watson
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    greenleaf-organics.co.uk
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">4.7GB</span><span class="text-zinc-400">/5GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    6,800
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Disabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-amber-500 dark:text-amber-400">Near Quota</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-305"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-305"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-305"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      alex@cryptotrack-api.io
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: 4 days ago
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Alex Rivera
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    cryptotrack-api.io
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">1.4GB</span><span class="text-zinc-400">/10GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    2,200
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Disabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-306"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-306"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-306"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      marcus@novatech-solutions.ai
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: 32 minutes ago
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Marcus Brody
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    novatech-solutions.ai
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">9.2GB</span><span class="text-zinc-400">/24GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    11,800
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-blue-500 font-medium">Enabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-307"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-307"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-307"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Email Address -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      felix@pulsecreative.de
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      Last access: 14 days ago
+                    </div>
+                  </td>
+
+                  <!-- Display Name -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Felix Weber
+                    </div>
+                  </td>
+
+                  <!-- Domain (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    pulsecreative.de
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">4.9GB</span><span class="text-zinc-400">/5GB</span>
+                  </td>
+
+                  <!-- Messages (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    8,900
+                  </td>
+
+                  <!-- Auto-Responder (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Disabled</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-rose-500 dark:text-rose-400" title="Mailbox Quota Full (100%)">Suspended</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage button -->
+                      <button 
+                        type="button" 
+                        class="mbx-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-308"
+                        title="Manage Mailbox Quotas & Passwords"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Webmail SSO button -->
+                      <button 
+                        type="button" 
+                        class="mbx-webmail-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-mbx-id="mbx-308"
+                        title="Open Webmail Client"
+                      >
+                        <i data-lucide="external-link" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="mbx-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-mbx-id="mbx-308"
+                        title="Delete Mailbox Account"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination / Footer Bar -->
+      <div class="p-4 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-zinc-500">
+        <div>
+          Showing <span class="text-zinc-900 dark:text-white font-semibold">8</span> of 8 mailboxes
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-400 hover:text-white disabled:opacity-40" disabled>
+            Prev
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-black font-bold">
+            1
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            2
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+  
+      </div>
+
+      <!-- 3. Create Mailbox Modal -->
+      
+    <div id="create-mbx-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-200">
+      <div class="relative w-full max-w-lg rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 shadow-2xl space-y-5">
+        
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+          <div>
+            <h3 class="text-lg font-bold font-display text-zinc-900 dark:text-white">
+              Create New Mailbox
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+              Set up a secure IMAP/POP3 user inbox with dedicated storage quota.
+            </p>
+          </div>
+          <button 
+            type="button" 
+            id="close-create-mbx-modal-btn"
+            class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Form Body -->
+        <form id="create-mbx-form" class="space-y-4">
+          
+          <!-- Domain & Username -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                USERNAME (BEFORE @)
+              </label>
+              <input 
+                type="text" 
+                id="modal-mbx-user-input"
+                required
+                placeholder="e.g. contact"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                DOMAIN
+              </label>
+              <select 
+                id="modal-mbx-domain-select"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+              >
+                <option value="techflow-media.com">techflow-media.com</option><option value="apexstudios.design">apexstudios.design</option><option value="greenleaf-organics.co.uk">greenleaf-organics.co.uk</option><option value="cryptotrack-api.io">cryptotrack-api.io</option><option value="novatech-solutions.ai">novatech-solutions.ai</option><option value="pulsecreative.de">pulsecreative.de</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Display Name -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              FULL / DISPLAY NAME
+            </label>
+            <input 
+              type="text" 
+              id="modal-mbx-name-input"
+              required
+              placeholder="e.g. Sarah Jenkins"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
+            />
+          </div>
+
+          <!-- Password & Quota -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                INITIAL PASSWORD
+              </label>
+              <input 
+                type="password" 
+                id="modal-mbx-pwd-input"
+                required
+                placeholder="••••••••••••"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+              />
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                STORAGE QUOTA
+              </label>
+              <select 
+                id="modal-mbx-quota-select"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+              >
+                <option value="5120">5 GB Storage</option>
+                <option value="10240" selected>10 GB Storage</option>
+                <option value="25600">25 GB Storage</option>
+                <option value="51200">50 GB Storage</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end gap-2">
+            <button 
+              type="button" 
+              id="cancel-create-mbx-btn"
+              class="px-3.5 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              class="px-4 py-2 text-xs font-mono font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+            >
+              Create Mailbox
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  
+
+      <!-- 4. Slide-over Details Drawer -->
+      
+    <div id="mbx-details-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-all duration-300">
+      <!-- Backdrop -->
+      <div id="mbx-details-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+      
+      <div class="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+        <div class="w-screen max-w-lg bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto custom-scrollbar">
+          
+          <div>
+            <!-- Drawer Header -->
+            <div class="flex items-start justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="drawer-mbx-status" class="text-xs font-mono font-semibold text-emerald-500">Active</span>
+                  <span class="text-zinc-600 dark:text-zinc-700">•</span>
+                  <span id="drawer-mbx-domain" class="text-xs font-mono text-zinc-400">techflow-media.com</span>
+                </div>
+                <h3 id="drawer-mbx-email" class="text-lg font-bold font-display text-zinc-900 dark:text-white mt-1">sarah@techflow-media.com</h3>
+                <p id="drawer-mbx-name" class="text-xs font-mono text-zinc-400 mt-0.5">Sarah Jenkins</p>
+              </div>
+              <button type="button" id="close-mbx-drawer-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="mt-6 space-y-4">
+              
+              <!-- Storage & Messages Info -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  INBOX RESOURCE UTILIZATION
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">STORAGE QUOTA</span>
+                    <span id="drawer-mbx-storage" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">4.2 GB / 10 GB</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">STORED MESSAGES</span>
+                    <span id="drawer-mbx-messages" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">8,420 emails</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">LAST LOGIN</span>
+                    <span id="drawer-mbx-login" class="font-mono text-zinc-800 dark:text-zinc-200">12 minutes ago</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">AUTO-RESPONDER</span>
+                    <span id="drawer-mbx-responder" class="font-mono text-zinc-800 dark:text-zinc-200">Disabled</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Client Connection Settings (IMAP / SMTP) -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  CLIENT CONNECTION CONFIGURATION
+                </div>
+                <div class="space-y-1.5 font-mono text-xs">
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-500">Incoming IMAP:</span>
+                    <span class="text-zinc-800 dark:text-zinc-200">mail.hostlab.email : 993 (SSL)</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-500">Outgoing SMTP:</span>
+                    <span class="text-zinc-800 dark:text-zinc-200">mail.hostlab.email : 465 (SSL)</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-500">Username:</span>
+                    <span id="drawer-mbx-username" class="text-zinc-800 dark:text-zinc-200">sarah@techflow-media.com</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick Password Reset Form -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  RESET INBOX PASSWORD
+                </div>
+                <form id="drawer-reset-pwd-form" class="flex items-center gap-2">
+                  <input 
+                    type="password" 
+                    id="drawer-new-pwd-input" 
+                    placeholder="New password (min 8 chars)" 
+                    class="flex-1 px-3 py-1.5 text-xs bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded font-mono text-zinc-900 dark:text-white focus:outline-none"
+                    required
+                  />
+                  <button 
+                    type="submit" 
+                    id="drawer-update-pwd-btn"
+                    class="px-3 py-1.5 text-xs font-mono font-medium rounded bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors cursor-pointer"
+                  >
+                    Update
+                  </button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Drawer Footer -->
+          <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end">
+            <button 
+              type="button" 
+              id="drawer-mbx-done-btn"
+              class="px-4 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  
+
+    </div>

@@ -1,0 +1,255 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Staff & Roles
+          </h1>
+          <p class="text-xs text-zinc-500 mt-1">
+            Manage administrative personnel and configure role permissions.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2.5">
+          <!-- Segmented View Switcher -->
+          <div class="inline-flex p-1 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-100 dark:bg-zinc-900 text-xs font-medium">
+            <button 
+              type="button" 
+              id="switch-to-directory-btn"
+              class="px-3 py-1.5 rounded-md transition-all bg-white dark:bg-zinc-800 text-zinc-900 dark:text-white shadow-xs font-semibold"
+            >
+              Staff
+            </button>
+            <button 
+              type="button" 
+              id="switch-to-rbac-btn"
+              class="px-3 py-1.5 rounded-md transition-all text-zinc-500 hover:text-zinc-900 dark:hover:text-white"
+            >
+              Roles & Permissions
+            </button>
+          </div>
+
+          <button 
+            type="button" 
+            id="action-primary-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="user-plus" class="w-4 h-4"></i>
+            <span id="action-primary-label">Invite Staff</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- MAIN TAB 1: STAFF DIRECTORY -->
+      <div id="section-staff-directory" class=" space-y-4">
+        
+        <!-- Controls bar -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="staff-search-input"
+              value=""
+              placeholder="Search staff..."
+              class="w-full pl-9 pr-4 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+            />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <select 
+              id="staff-role-select" 
+              class="text-xs px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white focus:outline-none"
+            >
+              <option value="all">All Roles</option>
+              <option value="role-superadmin" >Super Administrator</option><option value="role-devops" >DevOps / SRE</option><option value="role-support-l2" >Support Lead</option><option value="role-billing-mgr" >Billing Manager</option><option value="role-auditor" >Auditor</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Staff Table -->
+        <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 overflow-hidden shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 text-zinc-500 font-mono text-[11px] uppercase tracking-wider">
+                  <th class="py-3 px-4 font-medium">Staff Member</th>
+                  <th class="py-3 px-4 font-medium">Department</th>
+                  <th class="py-3 px-4 font-medium">Role</th>
+                  <th class="py-3 px-4 font-medium">2FA</th>
+                  <th class="py-3 px-4 font-medium">Last Active</th>
+                  <th class="py-3 px-4 font-medium text-center">Status</th>
+                  <th class="py-3 px-4 font-medium text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="staff-table-body" class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+                <!-- Rendered via JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div id="stf-empty-state" class="hidden p-12 text-center">
+            <div class="inline-flex p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-3">
+              <i data-lucide="users" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">No staff members found</h3>
+            <p class="text-xs text-zinc-500">No personnel match your search or filter.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- MAIN TAB 2: RBAC ROLES SETTING & PERMISSIONS MATRIX -->
+      <div id="section-rbac-matrix" class="hidden space-y-6">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Left Column: Role List -->
+          <div class="space-y-3">
+            <div class="text-xs font-mono uppercase text-zinc-500 font-semibold">
+              Roles (5)
+            </div>
+
+            <div class="space-y-2" id="roles-cards-list">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- Right Column: Interactive Permission Matrix with Toggles -->
+          <div class="lg:col-span-2 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 p-6 space-y-6 shadow-sm" id="role-editor-container">
+            <!-- Rendered via JS based on selected role -->
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <div id="staff-drawer-container"></div>
+
+      <!-- Invite Staff Modal -->
+      <div id="invite-staff-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="user-plus" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold text-zinc-900 dark:text-white text-base">Invite Staff</h3>
+            </div>
+            <button type="button" id="close-invite-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="invite-staff-form" class="p-6 space-y-4 text-xs">
+            
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Full Name</label>
+                <input 
+                  type="text" 
+                  id="modal-stf-name" 
+                  placeholder="Elena Rostova" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+                />
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Email</label>
+                <input 
+                  type="email" 
+                  id="modal-stf-email" 
+                  placeholder="elena@hostlab.internal" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Department</label>
+                <select id="modal-stf-dept" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                  <option value="Operations">Operations</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="DevOps">DevOps</option>
+                  <option value="Support">Support</option>
+                  <option value="Finance">Finance</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Role</label>
+                <select id="modal-stf-role" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                  <option value="role-superadmin">Super Administrator</option><option value="role-devops">DevOps / SRE</option><option value="role-support-l2">Support Lead</option><option value="role-billing-mgr">Billing Manager</option><option value="role-auditor">Auditor</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-invite-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100"
+              >
+                Send Invite
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+      <!-- Create Role Modal -->
+      <div id="create-role-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="shield-plus" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold text-zinc-900 dark:text-white text-base">Create Role</h3>
+            </div>
+            <button type="button" id="close-role-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="create-role-form" class="p-6 space-y-4 text-xs">
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Role Name</label>
+              <input 
+                type="text" 
+                id="modal-role-name" 
+                placeholder="e.g. Migration Operator" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+              />
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-role-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100"
+              >
+                Create Role
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>

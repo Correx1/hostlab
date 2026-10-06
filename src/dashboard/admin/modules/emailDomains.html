@@ -1,0 +1,1155 @@
+<div class="space-y-6 max-w-7xl mx-auto">
+      
+      <!-- Module Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-zinc-200 dark:border-zinc-800/80">
+        <div>
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+            BUSINESS EMAIL / EMAIL DOMAINS
+          </div>
+          <h1 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-1">
+            Email Domains & Services
+          </h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+            Domain-level email routing, storage quota pools, anti-spam hygiene, and DKIM/SPF alignment.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-add-eml-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black text-xs font-mono font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>Add Email Domain</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. Top KPI Metrics -->
+      
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Card 1: Total Email Domains -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            5 Active
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Hosted Email Domains
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              624
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Domains
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            1 pending DNS • 2 suspended
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Total Mailboxes -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="inbox" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            IMAP / POP3
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Provisioned Inboxes
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              2,840
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Mailboxes
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            TLS encryption on port 993 & 465 enforced
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Storage Pool -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="hard-drive" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+            36.8%
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Mail Storage Pool
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              18.4 TB
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              / 50.0 TB
+            </span>
+          </div>
+          <div class="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full mt-2.5 overflow-hidden">
+            <div class="bg-purple-500 h-full rounded-full" style="width: 36.8%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Anti-Spam & Deliverability -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Rspamd AI
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Spam Filtering Efficiency
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              99.92%
+            </span>
+            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+              Zero Phishing
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            ClamAV antivirus + Greylisting active
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+
+      <!-- 2. Interactive Data Table -->
+      <div id="eml-table-container">
+        
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm overflow-hidden">
+      
+      <!-- Table Controls Bar -->
+      <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+          <button 
+            type="button" 
+            data-eml-filter="all"
+            class="eml-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold"
+          >
+            All Domains (8)
+          </button>
+          <button 
+            type="button" 
+            data-eml-filter="active"
+            class="eml-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Active (5)
+          </button>
+          <button 
+            type="button" 
+            data-eml-filter="pending-dns"
+            class="eml-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            DNS Pending (1)
+          </button>
+          <button 
+            type="button" 
+            data-eml-filter="suspended"
+            class="eml-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Suspended (2)
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="flex items-center gap-3">
+          <div class="relative flex-1 sm:w-64">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="eml-search-input"
+              value=""
+              placeholder="Search domain, client..." 
+              class="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Data Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-950/40 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+              <th class="py-3 px-4 sm:px-6">Domain</th>
+              <th class="py-3 px-4">Client / Owner</th>
+              <th class="py-3 px-4">Mail Package</th>
+              <th class="py-3 px-4">Inboxes Used</th>
+              <th class="py-3 px-4">Storage (NVMe)</th>
+              <th class="py-3 px-4">MX & Security</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 sm:px-6 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 font-sans">
+            
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      techflow-media.com
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      webmail.techflow-media.com
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Sarah Jenkins
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      sarah@techflow.io
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Pro Mail (50GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">8</span><span class="text-zinc-400">/20</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">14.2GB</span><span class="text-zinc-400">/50GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-emerald-500 font-medium">Signed</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pass</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-101"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-101"
+                        title="Suspend Email Domain"
+                      >
+                        <i data-lucide="pause-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-101"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      apexstudios.design
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      mail.apexstudios.design
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      David Vance
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      david@apexstudios.design
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Enterprise Mail (250GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">16</span><span class="text-zinc-400">/50</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">68.5GB</span><span class="text-zinc-400">/250GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-emerald-500 font-medium">Signed</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pass</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-102"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-102"
+                        title="Suspend Email Domain"
+                      >
+                        <i data-lucide="pause-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-102"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      greenleaf-organics.co.uk
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      webmail.greenleaf-organics.co.uk
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Emma Watson
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      emma@greenleaforganics.co.uk
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Starter Mail (15GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">4</span><span class="text-zinc-400">/5</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">12.8GB</span><span class="text-zinc-400">/15GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-emerald-500 font-medium">Signed</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pass</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-103"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-103"
+                        title="Suspend Email Domain"
+                      >
+                        <i data-lucide="pause-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-103"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      cryptotrack-api.io
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      mail.cryptotrack-api.io
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Alex Rivera
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      alex@cryptotrack.net
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Pro Mail (50GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">6</span><span class="text-zinc-400">/20</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">4.8GB</span><span class="text-zinc-400">/50GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-emerald-500 font-medium">Signed</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pass</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-104"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-104"
+                        title="Suspend Email Domain"
+                      >
+                        <i data-lucide="pause-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-104"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      pulsecreative.de
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      webmail.pulsecreative.de
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Felix Weber
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      felix@pulsecreative.de
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Starter Mail (15GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">3</span><span class="text-zinc-400">/5</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">14.9GB</span><span class="text-zinc-400">/15GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-emerald-500 font-medium">Signed</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pass</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-rose-500 dark:text-rose-400" title="Storage Quota Exceeded (99.3% full)">Suspended</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-105"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-105"
+                        title="Activate Email Domain"
+                      >
+                        <i data-lucide="play-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-105"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      novatech-solutions.ai
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      webmail.novatech-solutions.ai
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Marcus Brody
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      marcus@novatech.ai
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Enterprise Mail (250GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">22</span><span class="text-zinc-400">/50</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">45GB</span><span class="text-zinc-400">/250GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-emerald-500 font-medium">Signed</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pass</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-106"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-106"
+                        title="Suspend Email Domain"
+                      >
+                        <i data-lucide="pause-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-106"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      aurora-fashion.com
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      webmail.aurora-fashion.com
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Chloë Dupuis
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      chloe@aurorafashion.fr
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Pro Mail (50GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">0</span><span class="text-zinc-400">/20</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">0GB</span><span class="text-zinc-400">/50GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-amber-500">Pending</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pending</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-amber-500 dark:text-amber-400">DNS Pending</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-107"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-107"
+                        title="Activate Email Domain"
+                      >
+                        <i data-lucide="play-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-107"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      zenith-consulting.net
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5">
+                      webmail.zenith-consulting.net
+                    </div>
+                  </td>
+
+                  <!-- Client / Owner -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Patrick Stewart
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      patrick@zenithgroup.net
+                    </div>
+                  </td>
+
+                  <!-- Mail Package (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Starter Mail (15GB)
+                  </td>
+
+                  <!-- Inboxes Used (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">2</span><span class="text-zinc-400">/5</span>
+                  </td>
+
+                  <!-- Storage (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="font-semibold text-zinc-900 dark:text-zinc-100">1.2GB</span><span class="text-zinc-400">/15GB</span>
+                  </td>
+
+                  <!-- MX & Security (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>DKIM: <span class="text-emerald-500 font-medium">Signed</span></div>
+                    <div class="text-[10px] text-zinc-400">SPF: Pass</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-rose-500 dark:text-rose-400" title="Account Billing Overdue">Suspended</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage domain email settings -->
+                      <button 
+                        type="button" 
+                        class="eml-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-108"
+                        title="Manage Mailbox Routing & DNS Alignment"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Toggle Status -->
+                      <button 
+                        type="button" 
+                        class="eml-status-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-108"
+                        title="Activate Email Domain"
+                      >
+                        <i data-lucide="play-circle" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="eml-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-eml-id="eml-dom-108"
+                        title="Delete Email Domain Service"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination / Footer Bar -->
+      <div class="p-4 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-zinc-500">
+        <div>
+          Showing <span class="text-zinc-900 dark:text-white font-semibold">8</span> of 8 domains
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-400 hover:text-white disabled:opacity-40" disabled>
+            Prev
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-black font-bold">
+            1
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            2
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+  
+      </div>
+
+      <!-- 3. Add Domain Modal -->
+      
+    <div id="add-eml-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-200">
+      <div class="relative w-full max-w-lg rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 shadow-2xl space-y-5">
+        
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+          <div>
+            <h3 class="text-lg font-bold font-display text-zinc-900 dark:text-white">
+              Add Email Domain Service
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+              Provision multi-mailbox cloud business email routing with automated DKIM & SPF.
+            </p>
+          </div>
+          <button 
+            type="button" 
+            id="close-add-eml-modal-btn"
+            class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Form Body -->
+        <form id="add-eml-form" class="space-y-4">
+          
+          <!-- Domain Name -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              EMAIL DOMAIN
+            </label>
+            <input 
+              type="text" 
+              id="modal-eml-domain-input"
+              required
+              placeholder="e.g. acmebrand.com"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+
+          <!-- Mail Plan -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              MAILBOX PACKAGE / STORAGE TIER
+            </label>
+            <select 
+              id="modal-eml-plan-select"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+            >
+              <option value="Starter Mail (15GB)">Starter Mail (Up to 5 inboxes / 15GB Pool)</option>
+              <option value="Pro Mail (50GB)">Pro Mail (Up to 20 inboxes / 50GB Pool)</option>
+              <option value="Enterprise Mail (250GB)">Enterprise Mail (Up to 50 inboxes / 250GB Pool)</option>
+            </select>
+          </div>
+
+          <!-- Client Owner -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                CLIENT / ACCOUNT
+              </label>
+              <input 
+                type="text" 
+                id="modal-eml-client-name"
+                required
+                placeholder="Jane Doe"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                BILLING EMAIL
+              </label>
+              <input 
+                type="email" 
+                id="modal-eml-client-email"
+                required
+                placeholder="jane@example.com"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+              />
+            </div>
+          </div>
+
+          <!-- Auto-Generate DKIM Checkbox -->
+          <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
+            <div class="flex items-center gap-2.5">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
+              <div>
+                <div class="text-xs font-medium text-zinc-900 dark:text-zinc-200">Generate 2048-bit DKIM Key</div>
+                <div class="text-[11px] text-zinc-400">Auto-add to Hostlab DNS zones if hosted locally</div>
+              </div>
+            </div>
+            <input type="checkbox" id="modal-eml-dkim-toggle" checked class="rounded border-zinc-300 text-black focus:ring-0 w-4 h-4 cursor-pointer" />
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end gap-2">
+            <button 
+              type="button" 
+              id="cancel-add-eml-btn"
+              class="px-3.5 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              class="px-4 py-2 text-xs font-mono font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+            >
+              Provision Email Service
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  
+
+      <!-- 4. Slide-over Details Drawer -->
+      
+    <div id="eml-domain-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-all duration-300">
+      <!-- Backdrop -->
+      <div id="eml-domain-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+      
+      <div class="fixed inset-y-0 right-0 max-w-full flex pl-6 sm:pl-10">
+        <div class="w-screen max-w-lg bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto custom-scrollbar">
+          
+          <div>
+            <!-- Drawer Header -->
+            <div class="flex items-start justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="drawer-eml-status" class="text-xs font-mono font-semibold text-emerald-500">Active</span>
+                  <span class="text-zinc-600 dark:text-zinc-700">•</span>
+                  <span id="drawer-eml-plan" class="text-xs font-mono text-zinc-400">Pro Mail (50GB)</span>
+                </div>
+                <h3 id="drawer-eml-domain" class="text-lg font-bold font-display text-zinc-900 dark:text-white mt-1">techflow-media.com</h3>
+                <p id="drawer-eml-client" class="text-xs font-mono text-zinc-400 mt-0.5">Sarah Jenkins (sarah@techflow.io)</p>
+              </div>
+              <button type="button" id="close-eml-drawer-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="mt-6 space-y-4">
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  MAIL SERVICE ALLOCATION
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">MAILBOXES USED</span>
+                    <span id="drawer-eml-inboxes" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">8 / 20 Inboxes</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">DISK STORAGE USED</span>
+                    <span id="drawer-eml-storage" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">14.2 GB / 50 GB</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">WEBMAIL PORTAL</span>
+                    <span id="drawer-eml-webmail" class="font-mono text-zinc-800 dark:text-zinc-200 break-all">webmail.techflow-media.com</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">DATE PROVISIONED</span>
+                    <span id="drawer-eml-created" class="font-mono text-zinc-800 dark:text-zinc-200">2024-03-12</span>
+                  </div>
+                </div>
+
+                <div class="pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60">
+                  <span class="text-zinc-400 block text-[11px]">PRIMARY MX ROUTE</span>
+                  <span id="drawer-eml-mx" class="font-mono text-xs text-zinc-800 dark:text-zinc-200">10 mx1.hostlab.email</span>
+                </div>
+              </div>
+
+              <!-- DNS Alignment Guide -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  AUTHENTICATION & REPUTATION
+                </div>
+                <div class="space-y-1.5 font-mono text-xs">
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-500">SPF Record (TXT):</span>
+                    <span class="text-emerald-500 font-semibold">Pass (include:_spf.hostlab.cloud)</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-500">DKIM Signing:</span>
+                    <span class="text-emerald-500 font-semibold">2048-bit RSA Active</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-zinc-500">DMARC Policy:</span>
+                    <span class="text-zinc-800 dark:text-zinc-200">p=reject; rua=mailto:...</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fast Nav to Mailboxes -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
+                <div>
+                  <div class="text-xs font-medium text-zinc-900 dark:text-zinc-100">Manage Mailboxes for this Domain</div>
+                  <div class="text-[11px] text-zinc-400">Create user inboxes, reset passwords, set quotas</div>
+                </div>
+                <button 
+                  type="button" 
+                  id="drawer-go-mailboxes-btn"
+                  class="px-3 py-1.5 text-xs font-mono font-medium rounded bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors cursor-pointer"
+                >
+                  View Inboxes →
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drawer Footer -->
+          <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end">
+            <button 
+              type="button" 
+              id="drawer-eml-done-btn"
+              class="px-4 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  
+
+    </div>

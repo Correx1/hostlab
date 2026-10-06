@@ -1,0 +1,243 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar (NO CARDS OVERVIEW) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Migration Queue
+          </h1>
+          <p class="text-xs text-zinc-500 mt-1">
+            Automated site, database, and mailbox migrations.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-create-mig-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>New Migration</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls & Tabs -->
+      <div class="space-y-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-2" id="migration-filter-tabs">
+          <button 
+            type="button" 
+            data-filter="all" 
+            class="mig-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+          >
+            All Migrations (<span id="count-all">0</span>)
+          </button>
+          
+          <button 
+            type="button" 
+            data-filter="running" 
+            class="mig-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            In-Progress (<span id="count-running">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="queued" 
+            class="mig-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Queued (<span id="count-queued">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="completed" 
+            class="mig-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Completed (<span id="count-completed">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="failed" 
+            class="mig-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Failed (<span id="count-failed">0</span>)
+          </button>
+        </div>
+
+        <!-- Filter Search & Global Action -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="migration-search-input"
+              value=""
+              placeholder="Search by target domain, client, or source provider..."
+              class="w-full pl-9 pr-4 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+            />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-zinc-500">
+              Worker Capacity: 4/8 Concurrent Slots
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Data Table -->
+      <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 text-zinc-500 font-mono text-[11px] uppercase tracking-wider">
+                <th class="py-3 px-4 font-medium">Target Domain & Client</th>
+                <th class="py-3 px-4 font-medium">Source Engine</th>
+                <th class="py-3 px-4 font-medium">Progress</th>
+                <th class="py-3 px-4 font-medium text-right">Data Volume</th>
+                <th class="py-3 px-4 font-medium text-right">ETA</th>
+                <th class="py-3 px-4 font-medium text-center">Status</th>
+                <th class="py-3 px-4 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="migration-table-body" class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty state container -->
+        <div id="mig-empty-state" class="hidden p-12 text-center">
+          <div class="inline-flex p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-3">
+            <i data-lucide="arrow-left-right" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">No migrations found</h3>
+          <p class="text-xs text-zinc-500 max-w-sm mx-auto">
+            No migration tasks match your current filter or search criteria.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <div id="migration-drawer-container"></div>
+
+      <!-- Initiate Migration Modal -->
+      <div id="create-migration-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="arrow-left-right" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold font-display text-zinc-900 dark:text-white text-base">Initiate New Migration</h3>
+            </div>
+            <button type="button" id="close-create-mig-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="create-migration-form" class="p-6 space-y-4 text-xs">
+            
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Target Domain Name</label>
+              <input 
+                type="text" 
+                id="modal-mig-domain" 
+                placeholder="example.com" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Client / Organization</label>
+              <input 
+                type="text" 
+                id="modal-mig-client" 
+                placeholder="Acme Studios LLC" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Source Engine / Format</label>
+              <select id="modal-mig-provider" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none font-mono">
+                <option value="cPanel Backup (WHM API)">cPanel Live Stream (WHM / cPanel User Credentials)</option>
+                <option value="WordPress SFTP/MySQL Migrator">WordPress Engine (Direct SFTP & MySQL Dump)</option>
+                <option value="Plesk JetBackup Archive">Plesk XML/JetBackup Ingestion</option>
+                <option value="DirectAdmin Full User Backup">DirectAdmin User Archive (.tar.gz)</option>
+                <option value="Generic SSH / Rsync Server">Generic SSH / Rsync Remote Host</option>
+              </select>
+            </div>
+
+            <div class="grid grid-cols-3 gap-3">
+              <div class="col-span-2">
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Source Host / IP</label>
+                <input 
+                  type="text" 
+                  id="modal-mig-ip" 
+                  placeholder="198.51.100.42" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+                />
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Port</label>
+                <input 
+                  type="number" 
+                  id="modal-mig-port" 
+                  value="22" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Target Destination Node</label>
+              <select id="modal-mig-target" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none font-mono">
+                <option value="vps-lon-01 (185.193.64.12)">vps-lon-01 (London Primary - 185.193.64.12)</option>
+                <option value="app-fra-02 (185.193.64.14)">app-fra-02 (Frankfurt Web Node - 185.193.64.14)</option>
+                <option value="vps-sto-01 (185.193.66.88)">vps-sto-01 (Stockholm Dedicated - 185.193.66.88)</option>
+              </select>
+            </div>
+
+            <!-- Migration Components -->
+            <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40 space-y-2">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="modal-mig-opt-mail" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                <span>Migrate existing IMAP/POP3 Mailboxes and message stores</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="modal-mig-opt-dns" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                <span>Auto-provision Hostlab authoritative DNS zone</span>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-create-mig-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100"
+              >
+                Launch Pipeline
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>

@@ -1,0 +1,183 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+
+      <!-- Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Announcements
+          </h1>
+          <p class="text-xs text-zinc-500 mt-1">Post platform-wide notices and updates to customers.</p>
+        </div>
+        <button
+          type="button"
+          id="compose-announcement-btn"
+          class="inline-flex items-center gap-2 px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+        >
+          <i data-lucide="megaphone" class="w-4 h-4"></i>
+          New Announcement
+        </button>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="flex items-center gap-2 flex-wrap">
+        
+          <button
+            type="button"
+            data-ann-filter="all"
+            class="ann-filter-btn px-3 py-1.5 text-xs font-medium rounded-md border transition-colors cursor-pointer border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-zinc-900"
+          >All</button>
+        
+          <button
+            type="button"
+            data-ann-filter="published"
+            class="ann-filter-btn px-3 py-1.5 text-xs font-medium rounded-md border transition-colors cursor-pointer border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-400"
+          >Published</button>
+        
+          <button
+            type="button"
+            data-ann-filter="draft"
+            class="ann-filter-btn px-3 py-1.5 text-xs font-medium rounded-md border transition-colors cursor-pointer border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-400"
+          >Draft</button>
+        
+          <button
+            type="button"
+            data-ann-filter="archived"
+            class="ann-filter-btn px-3 py-1.5 text-xs font-medium rounded-md border transition-colors cursor-pointer border-zinc-200 dark:border-zinc-800 text-zinc-500 hover:text-zinc-900 dark:hover:text-white hover:border-zinc-400"
+          >Archived</button>
+        
+      </div>
+
+      <!-- Announcements List -->
+      <div id="ann-list-container" class="space-y-2">
+        
+      <div
+        class="ann-row flex items-start gap-4 p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/30 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-colors cursor-pointer"
+        data-ann-id="ANN-001"
+      >
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-1 flex-wrap">
+            <span class="text-xs font-medium text-zinc-900 dark:text-white">Scheduled Network Maintenance — Frankfurt DC</span>
+          </div>
+          <div class="text-[11px] text-zinc-400 line-clamp-2">We will be performing scheduled network maintenance on our Frankfurt (eu-central-1) edge nodes on October 5th, 2024 from 02:00–04:00 UTC. VPS instances in this region may experience brief connectivity interruptions of up to 5 minutes. All other regions remain unaffected. No action is required from customers.</div>
+          <div class="flex items-center gap-4 mt-2">
+            <span class="text-[11px] font-mono text-amber-500">Maintenance</span>
+            <span class="text-[11px] font-mono text-emerald-500">Published</span>
+            <span class="text-[11px] text-zinc-400">Sep 26, 2024 at 14:00 UTC</span>
+            <span class="text-[11px] text-zinc-400">1,842 recipients · 68.4% open rate</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          
+          <button type="button" data-view-ann="ANN-001" class="ann-view-btn px-2.5 py-1 text-[11px] font-mono rounded border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 cursor-pointer">View</button>
+        </div>
+      </div>
+    
+      <div
+        class="ann-row flex items-start gap-4 p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/30 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-colors cursor-pointer"
+        data-ann-id="ANN-002"
+      >
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-1 flex-wrap">
+            <span class="text-xs font-medium text-zinc-900 dark:text-white">New: Managed PostgreSQL 16 Add-on Now Available</span>
+          </div>
+          <div class="text-[11px] text-zinc-400 line-clamp-2">We are excited to announce that Managed PostgreSQL 16 add-ons are now available for all VPS Dedicated and Bare Metal plans. Includes automated point-in-time recovery (PITR), read replicas, and connection pooling via PgBouncer. Available from your VPS control panel.</div>
+          <div class="flex items-center gap-4 mt-2">
+            <span class="text-[11px] font-mono text-emerald-500">Feature</span>
+            <span class="text-[11px] font-mono text-emerald-500">Published</span>
+            <span class="text-[11px] text-zinc-400">Sep 20, 2024 at 10:00 UTC</span>
+            <span class="text-[11px] text-zinc-400">1,284 recipients · 74.1% open rate</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          
+          <button type="button" data-view-ann="ANN-002" class="ann-view-btn px-2.5 py-1 text-[11px] font-mono rounded border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 cursor-pointer">View</button>
+        </div>
+      </div>
+    
+      <div
+        class="ann-row flex items-start gap-4 p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/30 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-colors cursor-pointer"
+        data-ann-id="ANN-003"
+      >
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-1 flex-wrap">
+            <span class="text-xs font-medium text-zinc-900 dark:text-white">Invoice Payment Reminder — October Renewal Cycle</span>
+          </div>
+          <div class="text-[11px] text-zinc-400 line-clamp-2">Friendly reminder that October renewal invoices will be automatically collected on October 1st, 2024. Ensure your payment method on file is up to date to avoid service interruption. Customers with expired payment methods will receive a 3-day grace period.</div>
+          <div class="flex items-center gap-4 mt-2">
+            <span class="text-[11px] font-mono text-blue-500">Promotion</span>
+            <span class="text-[11px] font-mono text-emerald-500">Published</span>
+            <span class="text-[11px] text-zinc-400">Sep 24, 2024 at 09:00 UTC</span>
+            <span class="text-[11px] text-zinc-400">2,418 recipients · 81.2% open rate</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          
+          <button type="button" data-view-ann="ANN-003" class="ann-view-btn px-2.5 py-1 text-[11px] font-mono rounded border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 cursor-pointer">View</button>
+        </div>
+      </div>
+    
+      <div
+        class="ann-row flex items-start gap-4 p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/30 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-colors cursor-pointer"
+        data-ann-id="ANN-004"
+      >
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-1 flex-wrap">
+            <span class="text-xs font-medium text-zinc-900 dark:text-white">Extended Downtime — Email Deliverability Cluster</span>
+          </div>
+          <div class="text-[11px] text-zinc-400 line-clamp-2">Our email deliverability cluster experienced an unplanned outage on September 15th from 03:20–04:45 UTC due to a certificate rotation failure on our DKIM signing service. All affected messages were queued and delivered within 2 hours. We apologize for the disruption.</div>
+          <div class="flex items-center gap-4 mt-2">
+            <span class="text-[11px] font-mono text-rose-500">Outage</span>
+            <span class="text-[11px] font-mono text-zinc-400">Archived</span>
+            <span class="text-[11px] text-zinc-400">Sep 15, 2024 at 06:00 UTC</span>
+            
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          
+          <button type="button" data-view-ann="ANN-004" class="ann-view-btn px-2.5 py-1 text-[11px] font-mono rounded border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 cursor-pointer">View</button>
+        </div>
+      </div>
+    
+      <div
+        class="ann-row flex items-start gap-4 p-4 border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/30 hover:bg-zinc-50 dark:hover:bg-zinc-900/60 transition-colors cursor-pointer"
+        data-ann-id="ANN-005"
+      >
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-3 mb-1 flex-wrap">
+            <span class="text-xs font-medium text-zinc-900 dark:text-white">Q4 Infrastructure Migration — DRAFT</span>
+          </div>
+          <div class="text-[11px] text-zinc-400 line-clamp-2">We are planning a major infrastructure upgrade across all regions in Q4 2024. This message is in draft and has not been sent to customers yet.</div>
+          <div class="flex items-center gap-4 mt-2">
+            <span class="text-[11px] font-mono text-amber-500">Maintenance</span>
+            <span class="text-[11px] font-mono text-zinc-400">Draft</span>
+            
+            
+          </div>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          
+            <button type="button" data-publish-ann="ANN-005" class="ann-publish-btn px-2.5 py-1 text-[11px] font-mono rounded border border-emerald-500 text-emerald-500 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 cursor-pointer">Publish</button>
+          
+          <button type="button" data-view-ann="ANN-005" class="ann-view-btn px-2.5 py-1 text-[11px] font-mono rounded border border-zinc-200 dark:border-zinc-700 hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 dark:text-zinc-300 cursor-pointer">View</button>
+        </div>
+      </div>
+    
+      </div>
+
+    </div>
+
+    <!-- Announcement Detail / Compose Drawer -->
+    <div
+      id="ann-drawer"
+      class="fixed inset-y-0 right-0 z-50 w-full max-w-xl bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col"
+    >
+      <div class="flex items-center justify-between px-6 py-5 border-b border-zinc-200 dark:border-zinc-800 shrink-0">
+        <h2 id="ann-drawer-title" class="text-sm font-bold text-zinc-900 dark:text-white">Announcement</h2>
+        <button type="button" id="ann-drawer-close" class="p-1.5 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 cursor-pointer">
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+      <div id="ann-drawer-body" class="flex-1 overflow-y-auto p-6"></div>
+      <div id="ann-drawer-footer" class="px-6 py-4 border-t border-zinc-200 dark:border-zinc-800 flex items-center justify-between shrink-0 gap-3"></div>
+    </div>
+    <div id="ann-overlay" class="fixed inset-0 bg-black/50 z-40 hidden"></div>

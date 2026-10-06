@@ -1,0 +1,282 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-500 mb-1">
+            <span>Business Email</span>
+            <span>/</span>
+            <span class="text-zinc-900 dark:text-zinc-100 font-semibold">Aliases & Routing</span>
+          </div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Email Aliases & Routing
+          </h1>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">
+            Manage virtual inbound addresses, catch-all domains, multi-recipient distribution groups, and SRS forwarding.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-create-alias-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-4 h-4"></i>
+            <span>Create Alias / Rule</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>TOTAL ALIASES</span>
+            <i data-lucide="arrow-left-right" class="w-4 h-4 text-zinc-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-zinc-900 dark:text-white font-display">
+            1,428
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1">
+            Across registered mail domains
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>ACTIVE ROUTES</span>
+            <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+          </div>
+          <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 font-display">
+            1,392
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1">
+            97.5% operational delivery
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>CATCH-ALL DOMAINS</span>
+            <i data-lucide="inbox" class="w-4 h-4 text-blue-500"></i>
+          </div>
+          <div class="text-2xl font-bold text-zinc-900 dark:text-white font-display">
+            38
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1">
+            Capturing unmatched addresses
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>FORWARDED (24H)</span>
+            <i data-lucide="send" class="w-4 h-4 text-zinc-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-zinc-900 dark:text-white font-display">
+            184.6K
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1">
+            Avg relay latency 42ms
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls & Tabs -->
+      <div class="space-y-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-2" id="alias-filter-tabs">
+          <button 
+            type="button" 
+            data-filter="all" 
+            class="alias-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+          >
+            All Rules (<span id="count-all">0</span>)
+          </button>
+          
+          <button 
+            type="button" 
+            data-filter="forwarder" 
+            class="alias-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Direct Forwarders (<span id="count-forwarder">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="group" 
+            class="alias-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Group Distribution (<span id="count-group">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="catchall" 
+            class="alias-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Catch-All Rules (<span id="count-catchall">0</span>)
+          </button>
+        </div>
+
+        <!-- Filter Search & Domain Selector -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="alias-search-input"
+              value=""
+              placeholder="Search by alias, domain, or target destination..."
+              class="w-full pl-9 pr-4 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+            />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <select 
+              id="alias-domain-select" 
+              class="text-xs px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white focus:outline-none"
+            >
+              <option value="all">All Domains</option>
+              <option value="apexstudios.design" >apexstudios.design</option><option value="cloudscale-saas.net" >cloudscale-saas.net</option><option value="hypervault-fintech.com" >hypervault-fintech.com</option><option value="techflow-media.com" >techflow-media.com</option><option value="urbanbistro.io" >urbanbistro.io</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Data Table -->
+      <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 text-zinc-500 font-mono text-[11px] uppercase tracking-wider">
+                <th class="py-3 px-4 font-medium">Source Alias</th>
+                <th class="py-3 px-4 font-medium">Routing Type</th>
+                <th class="py-3 px-4 font-medium">Destination Targets</th>
+                <th class="py-3 px-4 font-medium">SRS Rewriting</th>
+                <th class="py-3 px-4 font-medium text-right">Delivered (30D)</th>
+                <th class="py-3 px-4 font-medium text-center">Status</th>
+                <th class="py-3 px-4 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="alias-table-body" class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty state container -->
+        <div id="alias-empty-state" class="hidden p-12 text-center">
+          <div class="inline-flex p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-3">
+            <i data-lucide="arrow-left-right" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">No email aliases found</h3>
+          <p class="text-xs text-zinc-500 max-w-sm mx-auto">
+            No alias rules match the selected filter criteria or search query.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <div id="alias-drawer-container"></div>
+
+      <!-- Create Alias Modal -->
+      <div id="create-alias-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="plus-circle" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold font-display text-zinc-900 dark:text-white text-base">Create Routing Rule</h3>
+            </div>
+            <button type="button" id="close-create-alias-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="create-alias-form" class="p-6 space-y-4">
+            
+            <!-- Source Address -->
+            <div>
+              <label class="block text-xs font-mono uppercase text-zinc-500 mb-1.5">Source Address</label>
+              <div class="flex items-center">
+                <input 
+                  type="text" 
+                  id="modal-alias-prefix-input" 
+                  placeholder="support or * (for catch-all)" 
+                  required
+                  class="flex-1 px-3 py-2 text-xs rounded-l-md border border-r-0 border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+                />
+                <span class="px-2 py-2 text-xs bg-zinc-100 dark:bg-zinc-800 border-y border-zinc-200 dark:border-zinc-800 text-zinc-500 font-mono">@</span>
+                <select 
+                  id="modal-alias-domain-select" 
+                  class="px-3 py-2 text-xs rounded-r-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+                >
+                  <option value="apexstudios.design">apexstudios.design</option><option value="cloudscale-saas.net">cloudscale-saas.net</option><option value="hypervault-fintech.com">hypervault-fintech.com</option><option value="techflow-media.com">techflow-media.com</option><option value="urbanbistro.io">urbanbistro.io</option>
+                </select>
+              </div>
+              <p class="text-[11px] text-zinc-500 mt-1">Use <span class="font-mono text-zinc-700 dark:text-zinc-300">*</span> to create a domain-wide catch-all rule.</p>
+            </div>
+
+            <!-- Routing Type -->
+            <div>
+              <label class="block text-xs font-mono uppercase text-zinc-500 mb-1.5">Rule Type</label>
+              <select 
+                id="modal-alias-type-select" 
+                class="w-full px-3 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+              >
+                <option value="Forwarder">Direct Forwarder (Single or external inbox)</option>
+                <option value="Group Distribution">Group Distribution (Multiple internal/external inboxes)</option>
+                <option value="Catch-All">Catch-All (Fallback for unrouted addresses)</option>
+                <option value="Pipe to Script">Pipe to Script (CLI stdin processor)</option>
+              </select>
+            </div>
+
+            <!-- Destination Targets -->
+            <div>
+              <label class="block text-xs font-mono uppercase text-zinc-500 mb-1.5">Destination Targets (comma separated)</label>
+              <textarea 
+                id="modal-alias-targets-input" 
+                rows="3" 
+                placeholder="sarah@techflow-media.com, help@zendesk.io" 
+                required
+                class="w-full px-3 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none placeholder-zinc-400 font-mono"
+              ></textarea>
+              <p class="text-[11px] text-zinc-500 mt-1">For pipe to script, enter absolute executable path (e.g. /var/scripts/hook.py).</p>
+            </div>
+
+            <!-- SRS Option -->
+            <div class="flex items-center justify-between p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40">
+              <div>
+                <div class="text-xs font-medium text-zinc-900 dark:text-white">Enable SRS (Sender Rewriting Scheme)</div>
+                <div class="text-[11px] text-zinc-500">Rewrites MAIL FROM envelope to preserve SPF compliance on forwarded mail</div>
+              </div>
+              <input type="checkbox" id="modal-alias-srs-checkbox" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 focus:ring-0 w-4 h-4 cursor-pointer" />
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-create-alias-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100"
+              >
+                Create Rule
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>

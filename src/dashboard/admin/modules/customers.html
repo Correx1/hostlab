@@ -1,0 +1,229 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar (NO CARDS OVERVIEW) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Customers
+          </h1>
+          <p class="text-xs text-zinc-500 mt-1">
+            Manage organization accounts, subscriptions, and profile details.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-create-customer-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="user-plus" class="w-4 h-4"></i>
+            <span>Add Customer</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls & Tabs -->
+      <div class="space-y-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-2" id="customer-filter-tabs">
+          <button 
+            type="button" 
+            data-filter="all" 
+            class="cust-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+          >
+            All Accounts (<span id="count-all">0</span>)
+          </button>
+          
+          <button 
+            type="button" 
+            data-filter="active" 
+            class="cust-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Active (<span id="count-active">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="pending" 
+            class="cust-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Pending Verification (<span id="count-pending">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="suspended" 
+            class="cust-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Suspended (<span id="count-suspended">0</span>)
+          </button>
+        </div>
+
+        <!-- Filter Search & Country Selector -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="customer-search-input"
+              value=""
+              placeholder="Search by name, company, email, or account ID..."
+              class="w-full pl-9 pr-4 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+            />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <select 
+              id="customer-country-select" 
+              class="text-xs px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white focus:outline-none"
+            >
+              <option value="all">All Jurisdictions</option>
+              <option value="Bulgaria" >Bulgaria</option><option value="Germany" >Germany</option><option value="Sweden" >Sweden</option><option value="United Kingdom" >United Kingdom</option><option value="United States" >United States</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Data Table -->
+      <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 text-zinc-500 font-mono text-[11px] uppercase tracking-wider">
+                <th class="py-3 px-4 font-medium">Customer & Company</th>
+                <th class="py-3 px-4 font-medium">Contact Email</th>
+                <th class="py-3 px-4 font-medium text-center">Active Services</th>
+                <th class="py-3 px-4 font-medium text-right">Lifetime Spend</th>
+                <th class="py-3 px-4 font-medium">Joined Date</th>
+                <th class="py-3 px-4 font-medium text-center">Status</th>
+                <th class="py-3 px-4 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="customer-table-body" class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty state container -->
+        <div id="cust-empty-state" class="hidden p-12 text-center">
+          <div class="inline-flex p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-3">
+            <i data-lucide="users" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">No customers found</h3>
+          <p class="text-xs text-zinc-500 max-w-sm mx-auto">
+            No customer accounts match your current filter or query parameters.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <div id="customer-drawer-container"></div>
+
+      <!-- Add Customer Modal -->
+      <div id="create-customer-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="user-plus" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold font-display text-zinc-900 dark:text-white text-base">Register Customer</h3>
+            </div>
+            <button type="button" id="close-create-cust-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="create-customer-form" class="p-6 space-y-4 text-xs">
+            
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Full Name</label>
+                <input 
+                  type="text" 
+                  id="modal-cust-name" 
+                  placeholder="Sarah Jenkins" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+                />
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Company / Org</label>
+                <input 
+                  type="text" 
+                  id="modal-cust-company" 
+                  placeholder="Acme Studio LLC" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Primary Email Address</label>
+              <input 
+                type="email" 
+                id="modal-cust-email" 
+                placeholder="billing@company.com" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+              />
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Country / Jurisdiction</label>
+                <select id="modal-cust-country" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                  <option value="United States">United States (USD)</option>
+                  <option value="United Kingdom">United Kingdom (GBP)</option>
+                  <option value="Germany">Germany (EUR)</option>
+                  <option value="Sweden">Sweden (EUR)</option>
+                  <option value="Bulgaria">Bulgaria (EUR)</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Phone Number</label>
+                <input 
+                  type="text" 
+                  id="modal-cust-phone" 
+                  placeholder="+1 (555) 000-0000" 
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div class="p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40 space-y-2">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="modal-cust-send-welcome" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                <span>Send automated onboarding email with temporary password</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" id="modal-cust-require-2fa" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                <span>Enforce Two-Factor Authentication (2FA) on first login</span>
+              </label>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-create-cust-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100"
+              >
+                Create Account
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hostlab Client Dashboard | Manage Infrastructure</title>
+  <meta name="description" content="Hostlab Client Console for managing your web sites, cloud VPS instances, domains, email accounts, and billing." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/src/style.css">
+  <script>
+    if (localStorage.getItem('hostlab-theme') === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+  <style>
+    body::before {
+      display: none !important;
+    }
+  </style>
+</head>
+<body class="bg-[#f4f4f5] text-zinc-900 dark:bg-[#09090b] dark:text-zinc-100 h-screen overflow-hidden antialiased">
+  <div id="app" class="h-full w-full"></div>
+  <script type="module" src="/src/dashboard/user/user.js"></script>
+</body>
+</html>

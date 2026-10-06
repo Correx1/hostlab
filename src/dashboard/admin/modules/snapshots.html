@@ -1,0 +1,1029 @@
+<div class="space-y-6 max-w-7xl mx-auto">
+      
+      <!-- Module Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-zinc-200 dark:border-zinc-800/80">
+        <div>
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+            VPS INSTANCES / SNAPSHOTS & IMAGES
+          </div>
+          <h1 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-1">
+            Snapshots & Custom Images
+          </h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+            Point-in-time crash-consistent snapshots, golden OS deployment templates, and automated restore pipelines.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-create-snap-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black text-xs font-mono font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>Take Snapshot</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. Top KPI Metrics -->
+      
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Card 1: Total Storage Used -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="hard-drive" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Deduplicated
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Backup Storage Pool
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              14.8 TB
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              NVMe Object Storage
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Incremental ZFS block compression active
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Manual Snapshots -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="camera" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            Point-in-Time
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Live VM Snapshots
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              3
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Active Snapshots
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Zero-downtime consistency
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Custom OS Gold Images -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="disc" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+            Reusable
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Custom OS Images
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              2
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Gold Templates
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Ready for instant VPS deployment
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Scheduled Backups -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="archive" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            Auto-Pruning
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Automated Backups
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              2
+            </span>
+            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+              Daily/Weekly
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Average Restore: 4m 12s
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+
+      <!-- 2. Interactive Data Table -->
+      <div id="snap-table-container">
+        
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm overflow-hidden">
+      
+      <!-- Table Controls Bar -->
+      <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+          <button 
+            type="button" 
+            data-snap-filter="all"
+            class="snap-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold"
+          >
+            All Items (7)
+          </button>
+          <button 
+            type="button" 
+            data-snap-filter="snapshot"
+            class="snap-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Snapshots (3)
+          </button>
+          <button 
+            type="button" 
+            data-snap-filter="image"
+            class="snap-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Custom Images (2)
+          </button>
+          <button 
+            type="button" 
+            data-snap-filter="backup"
+            class="snap-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Auto Backups (2)
+          </button>
+        </div>
+
+        <!-- Search Input -->
+        <div class="flex items-center gap-3">
+          <div class="relative flex-1 sm:w-64">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="snap-search-input"
+              value=""
+              placeholder="Search snapshot, VPS, OS..." 
+              class="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Data Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-950/40 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+              <th class="py-3 px-4 sm:px-6">Snapshot / Image</th>
+              <th class="py-3 px-4">Source VPS</th>
+              <th class="py-3 px-4">Type</th>
+              <th class="py-3 px-4">Size</th>
+              <th class="py-3 px-4">Operating System</th>
+              <th class="py-3 px-4">Created Date</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 sm:px-6 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 font-sans">
+            
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Name & Description -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      prod-api-pre-migration
+                    </div>
+                    <div class="text-[11px] text-zinc-400 mt-0.5 truncate max-w-xs">
+                      Pre-v2.4 API deployment snapshot
+                    </div>
+                  </td>
+
+                  <!-- Source VPS (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    prod-api-cluster-01
+                  </td>
+
+                  <!-- Type (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Snapshot
+                  </td>
+
+                  <!-- Size (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-900 dark:text-zinc-100 whitespace-nowrap font-semibold">
+                    42.5 GB
+                  </td>
+
+                  <!-- Operating System (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Ubuntu 22.04 LTS
+                  </td>
+
+                  <!-- Created Date & Retention -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>2024-03-24</div>
+                    <div class="text-[10px] text-zinc-400">Manual</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Available</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="snap-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-snap-id="snap-801"
+                        title="View Snapshot Details"
+                      >
+                        Details
+                      </button>
+
+                      <!-- Quick Restore -->
+                      <button 
+                        type="button" 
+                        class="snap-restore-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-snap-id="snap-801"
+                        title="Rollback / Restore to Source VPS"
+                      >
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="snap-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-snap-id="snap-801"
+                        title="Delete Snapshot"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Name & Description -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      gold-rocky-k8s-node-v1
+                    </div>
+                    <div class="text-[11px] text-zinc-400 mt-0.5 truncate max-w-xs">
+                      Hardened Kubernetes worker template with containerd & cilium
+                    </div>
+                  </td>
+
+                  <!-- Source VPS (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    analytics-k8s-node-03
+                  </td>
+
+                  <!-- Type (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Custom Image
+                  </td>
+
+                  <!-- Size (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-900 dark:text-zinc-100 whitespace-nowrap font-semibold">
+                    18.2 GB
+                  </td>
+
+                  <!-- Operating System (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Rocky Linux 9
+                  </td>
+
+                  <!-- Created Date & Retention -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>2024-03-15</div>
+                    <div class="text-[10px] text-zinc-400">Permanent</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Available</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="snap-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-snap-id="snap-802"
+                        title="View Snapshot Details"
+                      >
+                        Details
+                      </button>
+
+                      <!-- Quick Restore -->
+                      <button 
+                        type="button" 
+                        class="snap-restore-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-snap-id="snap-802"
+                        title="Rollback / Restore to Source VPS"
+                      >
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="snap-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-snap-id="snap-802"
+                        title="Delete Snapshot"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Name & Description -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      db-master-weekly-backup
+                    </div>
+                    <div class="text-[11px] text-zinc-400 mt-0.5 truncate max-w-xs">
+                      Automated sunday full block storage backup
+                    </div>
+                  </td>
+
+                  <!-- Source VPS (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    db-master-postgres
+                  </td>
+
+                  <!-- Type (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Scheduled Backup
+                  </td>
+
+                  <!-- Size (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-900 dark:text-zinc-100 whitespace-nowrap font-semibold">
+                    112 GB
+                  </td>
+
+                  <!-- Operating System (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Debian 12 Bookworm
+                  </td>
+
+                  <!-- Created Date & Retention -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>2024-03-22</div>
+                    <div class="text-[10px] text-zinc-400">21 days left</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Available</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="snap-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-snap-id="snap-803"
+                        title="View Snapshot Details"
+                      >
+                        Details
+                      </button>
+
+                      <!-- Quick Restore -->
+                      <button 
+                        type="button" 
+                        class="snap-restore-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-snap-id="snap-803"
+                        title="Rollback / Restore to Source VPS"
+                      >
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="snap-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-snap-id="snap-803"
+                        title="Delete Snapshot"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Name & Description -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      redis-state-snapshot-01
+                    </div>
+                    <div class="text-[11px] text-zinc-400 mt-0.5 truncate max-w-xs">
+                      Pre-kernel upgrade memory state
+                    </div>
+                  </td>
+
+                  <!-- Source VPS (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    redis-cache-iad
+                  </td>
+
+                  <!-- Type (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Snapshot
+                  </td>
+
+                  <!-- Size (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-900 dark:text-zinc-100 whitespace-nowrap font-semibold">
+                    14.8 GB
+                  </td>
+
+                  <!-- Operating System (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Ubuntu 24.04 LTS
+                  </td>
+
+                  <!-- Created Date & Retention -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>2024-03-20</div>
+                    <div class="text-[10px] text-zinc-400">6 days left</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Available</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="snap-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-snap-id="snap-804"
+                        title="View Snapshot Details"
+                      >
+                        Details
+                      </button>
+
+                      <!-- Quick Restore -->
+                      <button 
+                        type="button" 
+                        class="snap-restore-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-snap-id="snap-804"
+                        title="Rollback / Restore to Source VPS"
+                      >
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="snap-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-snap-id="snap-804"
+                        title="Delete Snapshot"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Name & Description -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      nodejs-ssr-base-template
+                    </div>
+                    <div class="text-[11px] text-zinc-400 mt-0.5 truncate max-w-xs">
+                      Node.js 20 LTS + PM2 + Nginx reverse proxy pre-configured
+                    </div>
+                  </td>
+
+                  <!-- Source VPS (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    staging-env-nextjs
+                  </td>
+
+                  <!-- Type (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Custom Image
+                  </td>
+
+                  <!-- Size (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-900 dark:text-zinc-100 whitespace-nowrap font-semibold">
+                    12 GB
+                  </td>
+
+                  <!-- Operating System (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Ubuntu 22.04 LTS
+                  </td>
+
+                  <!-- Created Date & Retention -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>2024-02-28</div>
+                    <div class="text-[10px] text-zinc-400">Permanent</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Available</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="snap-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-snap-id="snap-805"
+                        title="View Snapshot Details"
+                      >
+                        Details
+                      </button>
+
+                      <!-- Quick Restore -->
+                      <button 
+                        type="button" 
+                        class="snap-restore-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-snap-id="snap-805"
+                        title="Rollback / Restore to Source VPS"
+                      >
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="snap-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-snap-id="snap-805"
+                        title="Delete Snapshot"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Name & Description -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      worker-queue-nightly
+                    </div>
+                    <div class="text-[11px] text-zinc-400 mt-0.5 truncate max-w-xs">
+                      Daily automated backup
+                    </div>
+                  </td>
+
+                  <!-- Source VPS (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    worker-queue-runner
+                  </td>
+
+                  <!-- Type (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Scheduled Backup
+                  </td>
+
+                  <!-- Size (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-900 dark:text-zinc-100 whitespace-nowrap font-semibold">
+                    8.5 GB
+                  </td>
+
+                  <!-- Operating System (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Alpine Linux 3.19
+                  </td>
+
+                  <!-- Created Date & Retention -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>2024-03-24</div>
+                    <div class="text-[10px] text-zinc-400">13 days left</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Available</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="snap-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-snap-id="snap-806"
+                        title="View Snapshot Details"
+                      >
+                        Details
+                      </button>
+
+                      <!-- Quick Restore -->
+                      <button 
+                        type="button" 
+                        class="snap-restore-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-snap-id="snap-806"
+                        title="Rollback / Restore to Source VPS"
+                      >
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="snap-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-snap-id="snap-806"
+                        title="Delete Snapshot"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Name & Description -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono">
+                      ai-training-checkpoint-raw
+                    </div>
+                    <div class="text-[11px] text-zinc-400 mt-0.5 truncate max-w-xs">
+                      Volume copy in progress (64%)
+                    </div>
+                  </td>
+
+                  <!-- Source VPS (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    ai-inferencing-host
+                  </td>
+
+                  <!-- Type (Plain text, no color) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Snapshot
+                  </td>
+
+                  <!-- Size (Clean numbers) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-900 dark:text-zinc-100 whitespace-nowrap font-semibold">
+                    85 GB
+                  </td>
+
+                  <!-- Operating System (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Ubuntu 22.04 LTS
+                  </td>
+
+                  <!-- Created Date & Retention -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    <div>2024-03-25</div>
+                    <div class="text-[10px] text-zinc-400">Manual</div>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-blue-500 dark:text-blue-400">Creating...</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Inspect details -->
+                      <button 
+                        type="button" 
+                        class="snap-inspect-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-snap-id="snap-807"
+                        title="View Snapshot Details"
+                      >
+                        Details
+                      </button>
+
+                      <!-- Quick Restore -->
+                      <button 
+                        type="button" 
+                        class="snap-restore-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-snap-id="snap-807"
+                        title="Rollback / Restore to Source VPS"
+                      >
+                        <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Delete -->
+                      <button 
+                        type="button" 
+                        class="snap-delete-btn p-1.5 rounded hover:bg-rose-500/10 text-zinc-400 hover:text-rose-600 transition-colors cursor-pointer"
+                        data-snap-id="snap-807"
+                        title="Delete Snapshot"
+                      >
+                        <i data-lucide="trash-2" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination / Footer Bar -->
+      <div class="p-4 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-zinc-500">
+        <div>
+          Showing <span class="text-zinc-900 dark:text-white font-semibold">7</span> of 7 items
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-400 hover:text-white disabled:opacity-40" disabled>
+            Prev
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-black font-bold">
+            1
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            2
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+  
+      </div>
+
+      <!-- 3. Create Snapshot Modal -->
+      
+    <div id="create-snap-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-200">
+      <div class="relative w-full max-w-lg rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 shadow-2xl space-y-5">
+        
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+          <div>
+            <h3 class="text-lg font-bold font-display text-zinc-900 dark:text-white">
+              Create Snapshot or Image
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+              Take a live point-in-time snapshot or convert a VPS into a reusable template image.
+            </p>
+          </div>
+          <button 
+            type="button" 
+            id="close-create-snap-modal-btn"
+            class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Form Body -->
+        <form id="create-snap-form" class="space-y-4">
+          
+          <!-- Source VPS -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              SOURCE VPS INSTANCE
+            </label>
+            <select 
+              id="modal-snap-source-select"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+            >
+              <option value="prod-api-cluster-01">prod-api-cluster-01 (Ubuntu 22.04 LTS)</option>
+              <option value="db-master-postgres">db-master-postgres (Debian 12)</option>
+              <option value="redis-cache-iad">redis-cache-iad (Ubuntu 24.04 LTS)</option>
+              <option value="worker-queue-runner">worker-queue-runner (Alpine 3.19)</option>
+              <option value="analytics-k8s-node-03">analytics-k8s-node-03 (Rocky Linux 9)</option>
+            </select>
+          </div>
+
+          <!-- Name -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              SNAPSHOT / IMAGE NAME
+            </label>
+            <input 
+              type="text" 
+              id="modal-snap-name-input"
+              required
+              placeholder="e.g. pre-upgrade-snap-01"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+
+          <!-- Type Selection -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                BACKUP TYPE
+              </label>
+              <select 
+                id="modal-snap-type-select"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+              >
+                <option value="Snapshot">Live VM Snapshot</option>
+                <option value="Custom Image">Reusable Custom Image</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                RETENTION POLICY
+              </label>
+              <select 
+                id="modal-snap-retention-select"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+              >
+                <option value="Manual">Manual (Keep until deleted)</option>
+                <option value="7 days">Auto-prune after 7 days</option>
+                <option value="30 days">Auto-prune after 30 days</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Description / Note -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              DESCRIPTION / NOTES
+            </label>
+            <input 
+              type="text" 
+              id="modal-snap-desc-input"
+              placeholder="Optional notes or changelog"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
+            />
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end gap-2">
+            <button 
+              type="button" 
+              id="cancel-create-snap-btn"
+              class="px-3.5 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              class="px-4 py-2 text-xs font-mono font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+            >
+              Capture Snapshot
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  
+
+      <!-- 4. Slide-over Details Drawer -->
+      
+    <div id="snap-details-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-all duration-300">
+      <!-- Backdrop -->
+      <div id="snap-details-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+      
+      <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+        <div class="w-screen max-w-lg bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto custom-scrollbar">
+          
+          <div>
+            <!-- Drawer Header -->
+            <div class="flex items-start justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="drawer-snap-type" class="text-xs font-mono font-medium text-zinc-600 dark:text-zinc-300">Snapshot</span>
+                  <span id="drawer-snap-status" class="text-xs font-mono font-semibold text-emerald-500">Available</span>
+                </div>
+                <h3 id="drawer-snap-name" class="text-lg font-bold font-display text-zinc-900 dark:text-white mt-1">prod-api-pre-migration</h3>
+                <p id="drawer-snap-source" class="text-xs font-mono text-zinc-400 mt-0.5">Source: prod-api-cluster-01</p>
+              </div>
+              <button type="button" id="close-snap-drawer-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Details Specs Grid -->
+            <div class="mt-6 space-y-4">
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  STORAGE & OS METADATA
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">COMPRESSED SIZE</span>
+                    <span id="drawer-snap-size" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">42.5 GB</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">RETENTION POLICY</span>
+                    <span id="drawer-snap-retention" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">Manual (No Expiry)</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">CREATED AT</span>
+                    <span id="drawer-snap-date" class="font-mono text-zinc-800 dark:text-zinc-200">2024-03-24 14:32</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">STORAGE REGION</span>
+                    <span id="drawer-snap-region" class="font-mono text-zinc-800 dark:text-zinc-200">Frankfurt (eu-central-1)</span>
+                  </div>
+                </div>
+
+                <div class="pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60">
+                  <span class="text-zinc-400 block text-[11px]">OPERATING SYSTEM</span>
+                  <span id="drawer-snap-os" class="font-mono text-xs text-zinc-800 dark:text-zinc-200">Ubuntu 22.04 LTS (Jammy)</span>
+                </div>
+
+                <div class="pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60">
+                  <span class="text-zinc-400 block text-[11px]">DESCRIPTION / NOTE</span>
+                  <p id="drawer-snap-desc" class="font-mono text-xs text-zinc-600 dark:text-zinc-400 mt-0.5">
+                    Pre-v2.4 API deployment snapshot
+                  </p>
+                </div>
+              </div>
+
+              <!-- Restoration Guide Box -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  RESTORATION PROCEDURES
+                </div>
+                <p class="text-xs text-zinc-500 leading-relaxed">
+                  Restoring will overwrite current NVMe block storage on the target server. 
+                  Alternatively, you can launch a brand-new VPS with this snapshot as its boot volume.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drawer Footer Actions -->
+          <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between gap-3">
+            <button 
+              type="button" 
+              id="drawer-snap-restore-btn"
+              class="px-4 py-2 text-xs font-mono font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+            >
+              Rollback Target VPS
+            </button>
+            <button 
+              type="button" 
+              id="drawer-snap-done-btn"
+              class="px-3.5 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  
+
+    </div>

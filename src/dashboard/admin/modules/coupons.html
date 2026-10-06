@@ -1,0 +1,239 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar (NO CARDS OVERVIEW) -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Coupons & Credits
+          </h1>
+          <p class="text-xs text-zinc-500 mt-1">
+            Manage promotional discount vouchers and customer wallet credits.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-create-coupon-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="tag" class="w-4 h-4"></i>
+            <span>New Coupon</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Controls & Tabs -->
+      <div class="space-y-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-2" id="coupon-filter-tabs">
+          <button 
+            type="button" 
+            data-filter="all" 
+            class="cpn-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+          >
+            All Codes & Credits (<span id="count-all">0</span>)
+          </button>
+          
+          <button 
+            type="button" 
+            data-filter="active" 
+            class="cpn-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Active Promos (<span id="count-active">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="credits" 
+            class="cpn-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Account Credits (<span id="count-credits">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="expired" 
+            class="cpn-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Expired / Depleted (<span id="count-expired">0</span>)
+          </button>
+        </div>
+
+        <!-- Filter Search & Type Selector -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="coupon-search-input"
+              value=""
+              placeholder="Search by code, campaign name, or recipient..."
+              class="w-full pl-9 pr-4 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+            />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <select 
+              id="coupon-type-select" 
+              class="text-xs px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white focus:outline-none"
+            >
+              <option value="all">All Discount Types</option>
+              <option value="Account Credit" >Account Credit</option><option value="Fixed Credit Grant" >Fixed Credit Grant</option><option value="Free Trial" >Free Trial</option><option value="Percentage Discount" >Percentage Discount</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Data Table -->
+      <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 text-zinc-500 font-mono text-[11px] uppercase tracking-wider">
+                <th class="py-3 px-4 font-medium">Coupon Code / Credit</th>
+                <th class="py-3 px-4 font-medium">Campaign & Service Scope</th>
+                <th class="py-3 px-4 font-medium text-right">Discount Value</th>
+                <th class="py-3 px-4 font-medium text-right">Usage / Cap</th>
+                <th class="py-3 px-4 font-medium">Expiration</th>
+                <th class="py-3 px-4 font-medium text-center">Status</th>
+                <th class="py-3 px-4 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="coupon-table-body" class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty state container -->
+        <div id="cpn-empty-state" class="hidden p-12 text-center">
+          <div class="inline-flex p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-3">
+            <i data-lucide="tag" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">No coupons found</h3>
+          <p class="text-xs text-zinc-500 max-w-sm mx-auto">
+            No promotional codes or credit grants match your current filter.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <div id="coupon-drawer-container"></div>
+
+      <!-- Create Coupon Modal -->
+      <div id="create-coupon-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="tag" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold font-display text-zinc-900 dark:text-white text-base">Create Promo Code / Credit</h3>
+            </div>
+            <button type="button" id="close-create-coupon-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="create-coupon-form" class="p-6 space-y-4 text-xs">
+            
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Coupon Code / Voucher</label>
+                <input 
+                  type="text" 
+                  id="modal-cpn-code" 
+                  placeholder="e.g. AUTUMN25" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono uppercase focus:outline-none"
+                />
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Discount Type</label>
+                <select id="modal-cpn-type" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                  <option value="Percentage Discount">Percentage Discount (%)</option>
+                  <option value="Fixed Credit Grant">Fixed Amount Credit ($)</option>
+                  <option value="Free Trial">Free Trial Duration</option>
+                  <option value="Account Credit">Direct Account Credit Adjustment</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Campaign Name & Description</label>
+              <input 
+                type="text" 
+                id="modal-cpn-campaign" 
+                placeholder="Black Friday 2024 Cloud VPS Launch" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none"
+              />
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Discount Value (e.g. 25% or $50)</label>
+                <input 
+                  type="text" 
+                  id="modal-cpn-value" 
+                  placeholder="25% Off" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+                />
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Redemption Usage Limit</label>
+                <input 
+                  type="number" 
+                  id="modal-cpn-limit" 
+                  value="100" 
+                  required
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Applicable Service</label>
+                <select id="modal-cpn-service" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                  <option value="All Services">All Infrastructure & Services</option>
+                  <option value="VPS Compute">VPS Compute Only</option>
+                  <option value="Web Hosting">Web Hosting Only</option>
+                  <option value="Business Email">Business Email Only</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-mono uppercase text-zinc-500 mb-1.5">Expiration Date</label>
+                <input 
+                  type="text" 
+                  id="modal-cpn-expiry" 
+                  value="Dec 31, 2024" 
+                  class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+                />
+              </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-create-coupon-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100"
+              >
+                Publish Coupon
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>

@@ -1,0 +1,1190 @@
+<div class="space-y-6 max-w-7xl mx-auto">
+      
+      <!-- Module Header -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-2 border-b border-zinc-200 dark:border-zinc-800/80">
+        <div>
+          <div class="text-xs font-mono font-semibold uppercase tracking-wider text-zinc-400 dark:text-zinc-500">
+            DOMAINS & DNS / REGISTERED DOMAINS
+          </div>
+          <h1 class="text-2xl font-bold font-display tracking-tight text-zinc-900 dark:text-white mt-1">
+            Registered Domains
+          </h1>
+          <p class="text-sm text-zinc-500 dark:text-zinc-400 mt-1">
+            ICANN registration management, WHOIS privacy protection, EPP transfer authorization, and automated lifecycles.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-register-domain-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black text-xs font-mono font-medium hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>Register Domain</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 1. Top KPI Metrics -->
+      
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      
+      <!-- Card 1: Total Registered Domains -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="globe" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+            ICANN Verified
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Registered Domains
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              1,420
+            </span>
+            <span class="text-xs font-mono text-zinc-400">
+              Across 4 Registrars
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            5 fully propagated & serving traffic
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Auto-Renew Coverage -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
+            Auto-Billing
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Automated Renewals
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              96.2%
+            </span>
+            <span class="text-xs font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+              Zero Expiry Gap
+            </span>
+          </div>
+          <div class="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full mt-2.5 overflow-hidden">
+            <div class="bg-blue-500 h-full rounded-full" style="width: 96.2%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Expiring Soon (<30 Days) -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="clock" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">
+            Action Ready
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Expiring &lt; 30 Days
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              1
+            </span>
+            <span class="text-xs font-mono text-amber-600 dark:text-amber-400">
+              Needs Payment
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Automated customer renewal reminders sent
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Pending Inbound Transfers -->
+      <div class="p-5 rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm">
+        <div class="flex items-start justify-between">
+          <div class="p-2.5 rounded-md bg-zinc-100 dark:bg-zinc-800/80 text-zinc-700 dark:text-zinc-300">
+            <i data-lucide="arrow-left-right" class="w-5 h-5"></i>
+          </div>
+          <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-purple-500/10 text-purple-600 dark:text-purple-400 border border-purple-500/20">
+            EPP Auth
+          </span>
+        </div>
+        <div class="mt-4">
+          <div class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wide">
+            Inbound Transfers
+          </div>
+          <div class="mt-1 flex items-baseline gap-2">
+            <span class="text-2xl font-bold font-mono tracking-tight text-zinc-900 dark:text-white">
+              1
+            </span>
+            <span class="text-xs font-mono text-purple-600 dark:text-purple-400">
+              In Progress
+            </span>
+          </div>
+          <div class="mt-2 text-xs text-zinc-500 truncate">
+            Awaiting losing registrar 5-day release
+          </div>
+        </div>
+      </div>
+
+    </div>
+  
+
+      <!-- 2. Interactive Data Table -->
+      <div id="domains-table-container">
+        
+    <div class="rounded-lg border border-zinc-200 dark:border-zinc-800/80 bg-white dark:bg-zinc-900/40 shadow-sm overflow-hidden">
+      
+      <!-- Table Controls Bar -->
+      <div class="p-4 sm:p-5 border-b border-zinc-200 dark:border-zinc-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0">
+          <button 
+            type="button" 
+            data-domain-filter="all"
+            class="domain-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors bg-zinc-900 text-white dark:bg-white dark:text-black font-semibold"
+          >
+            All Domains (8)
+          </button>
+          <button 
+            type="button" 
+            data-domain-filter="active"
+            class="domain-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Active (5)
+          </button>
+          <button 
+            type="button" 
+            data-domain-filter="expiring"
+            class="domain-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Expiring (1)
+          </button>
+          <button 
+            type="button" 
+            data-domain-filter="pending-transfer"
+            class="domain-filter-btn px-3 py-1.5 rounded-md text-xs font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white bg-zinc-100 dark:bg-zinc-800/60"
+          >
+            Transfers (1)
+          </button>
+        </div>
+
+        <!-- Search & TLD Filter -->
+        <div class="flex items-center gap-3">
+          <div class="relative flex-1 sm:w-60">
+            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-zinc-400">
+              <i data-lucide="search" class="w-3.5 h-3.5"></i>
+            </div>
+            <input 
+              type="text" 
+              id="domain-search-input"
+              value=""
+              placeholder="Search domain, client..." 
+              class="w-full pl-9 pr-3 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+
+          <select 
+            id="domain-tld-select"
+            class="px-2.5 py-1.5 text-xs bg-zinc-50 dark:bg-zinc-950 border border-zinc-200 dark:border-zinc-800 rounded-md text-zinc-700 dark:text-zinc-300 focus:outline-none focus:border-zinc-500 font-mono"
+          >
+            <option value="all" selected>All TLDs</option>
+            <option value=".com" >.com</option>
+            <option value=".io" >.io</option>
+            <option value=".ai" >.ai</option>
+            <option value=".design" >.design</option>
+            <option value=".co.uk" >.co.uk</option>
+            <option value=".de" >.de</option>
+            <option value=".net" >.net</option>
+          </select>
+        </div>
+
+      </div>
+
+      <!-- Data Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-zinc-200 dark:border-zinc-800/80 bg-zinc-50/60 dark:bg-zinc-950/40 text-[11px] font-mono text-zinc-400 uppercase tracking-wider">
+              <th class="py-3 px-4 sm:px-6">Domain</th>
+              <th class="py-3 px-4">Client / Registrant</th>
+              <th class="py-3 px-4">Registrar Backend</th>
+              <th class="py-3 px-4">Expires In</th>
+              <th class="py-3 px-4">Auto-Renew</th>
+              <th class="py-3 px-4">Transfer Lock</th>
+              <th class="py-3 px-4">Status</th>
+              <th class="py-3 px-4 sm:px-6 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-zinc-100 dark:divide-zinc-800/60 font-sans">
+            
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>techflow-media.com</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Sarah Jenkins
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      sarah@techflow.io
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    OpenSRS / Tucows
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-zinc-900 dark:text-zinc-100">198 days</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2025-04-12
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Enabled</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Locked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-101"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-101"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-101"
+                        title="Unlock for Transfer"
+                      >
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>apexstudios.design</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      David Vance
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      david@apexstudios.design
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Namecheap API
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-zinc-900 dark:text-zinc-100">116 days</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2025-01-20
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Enabled</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Locked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-102"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-102"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-102"
+                        title="Unlock for Transfer"
+                      >
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>greenleaf-organics.co.uk</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Emma Watson
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      emma@greenleaforganics.co.uk
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Nominet UK
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-zinc-900 dark:text-zinc-100">39 days</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2024-11-04
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Enabled</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-amber-500">Unlocked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-103"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-103"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-103"
+                        title="Enable Transfer Lock"
+                      >
+                        <i data-lucide="unlock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>cryptotrack-api.io</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Alex Rivera
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      alex@cryptotrack.net
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    Cloudflare Registrar
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-amber-500 font-semibold">7 days</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2024-04-02
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Manual</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Locked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-amber-500 dark:text-amber-400">Expiring Soon</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-104"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-104"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-104"
+                        title="Unlock for Transfer"
+                      >
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>pulsecreative.de</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Felix Weber
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      felix@pulsecreative.de
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    DENIC Direct
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-zinc-900 dark:text-zinc-100">54 days</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2024-05-19
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Enabled</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Locked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-105"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-105"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-105"
+                        title="Unlock for Transfer"
+                      >
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>novatech-solutions.ai</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Marcus Brody
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      marcus@novatech.ai
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    OpenSRS / Tucows
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-zinc-900 dark:text-zinc-100">476 days</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2026-01-14
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Enabled</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Locked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-emerald-500 dark:text-emerald-400">Active</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-106"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-106"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-106"
+                        title="Unlock for Transfer"
+                      >
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>aurora-fashion.com</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Chloë Dupuis
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      chloe@aurorafashion.fr
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    GoDaddy Inbound
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-zinc-900 dark:text-zinc-100">364 days</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2025-03-24
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Enabled</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-amber-500">Unlocked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-blue-500 dark:text-blue-400">Transferring</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-107"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-107"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-107"
+                        title="Enable Transfer Lock"
+                      >
+                        <i data-lucide="unlock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+                <tr class="hover:bg-zinc-50/80 dark:hover:bg-zinc-800/30 transition-colors group">
+                  
+                  <!-- Domain Name -->
+                  <td class="py-3.5 px-4 sm:px-6">
+                    <div class="font-medium text-zinc-900 dark:text-white font-mono flex items-center gap-1.5">
+                      <span>zenith-consulting.net</span>
+                    </div>
+                  </td>
+
+                  <!-- Client / Registrant -->
+                  <td class="py-3.5 px-4">
+                    <div class="font-medium text-zinc-900 dark:text-zinc-100">
+                      Patrick Stewart
+                    </div>
+                    <div class="text-[11px] text-zinc-400 font-mono mt-0.5 truncate max-w-[150px]">
+                      patrick@zenithgroup.net
+                    </div>
+                  </td>
+
+                  <!-- Registrar Backend (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs text-zinc-800 dark:text-zinc-200 whitespace-nowrap">
+                    ResellerClub API
+                  </td>
+
+                  <!-- Expires In (Clean numbers) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="font-mono text-xs text-rose-500 font-semibold">Expired 6d ago</span>
+                    <div class="text-[10px] font-mono text-zinc-400 mt-0.5">
+                      2024-03-19
+                    </div>
+                  </td>
+
+                  <!-- Auto-Renew (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-400">Manual</span>
+                  </td>
+
+                  <!-- Transfer Lock (Plain text) -->
+                  <td class="py-3.5 px-4 font-mono text-xs whitespace-nowrap">
+                    <span class="text-zinc-800 dark:text-zinc-200">Locked</span>
+                  </td>
+
+                  <!-- Status (Text Only, Colored) -->
+                  <td class="py-3.5 px-4 whitespace-nowrap">
+                    <span class="text-xs font-mono font-semibold text-rose-500 dark:text-rose-400">Expired</span>
+                  </td>
+
+                  <!-- Actions -->
+                  <td class="py-3.5 px-4 sm:px-6 text-right whitespace-nowrap">
+                    <div class="flex items-center justify-end gap-1.5">
+                      <!-- Manage details -->
+                      <button 
+                        type="button" 
+                        class="domain-manage-btn px-2.5 py-1 rounded bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-[11px] font-mono text-zinc-700 dark:text-zinc-300 transition-colors cursor-pointer"
+                        data-dom-id="dom-108"
+                        title="Manage Nameservers, DNSSEC & EPP Auth"
+                      >
+                        Manage
+                      </button>
+
+                      <!-- Quick renew -->
+                      <button 
+                        type="button" 
+                        class="domain-renew-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-108"
+                        title="Renew Domain (+1 Year)"
+                      >
+                        <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+                      </button>
+
+                      <!-- Lock toggle -->
+                      <button 
+                        type="button" 
+                        class="domain-lock-btn p-1.5 rounded hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+                        data-dom-id="dom-108"
+                        title="Unlock for Transfer"
+                      >
+                        <i data-lucide="lock" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination / Footer Bar -->
+      <div class="p-4 border-t border-zinc-200 dark:border-zinc-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs font-mono text-zinc-500">
+        <div>
+          Showing <span class="text-zinc-900 dark:text-white font-semibold">8</span> of 8 domains
+        </div>
+        <div class="flex items-center gap-1.5">
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-400 hover:text-white disabled:opacity-40" disabled>
+            Prev
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-900 dark:border-white bg-zinc-900 dark:bg-white text-white dark:text-black font-bold">
+            1
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            2
+          </button>
+          <button type="button" class="px-2.5 py-1 rounded border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/60 text-zinc-600 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">
+            Next
+          </button>
+        </div>
+      </div>
+
+    </div>
+  
+      </div>
+
+      <!-- 3. Register / Transfer Modal -->
+      
+    <div id="register-domain-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden transition-opacity duration-200">
+      <div class="relative w-full max-w-lg rounded-xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 p-6 shadow-2xl space-y-5">
+        
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between pb-3 border-b border-zinc-100 dark:border-zinc-800/80">
+          <div>
+            <h3 class="text-lg font-bold font-display text-zinc-900 dark:text-white">
+              Register / Transfer Domain
+            </h3>
+            <p class="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+              Submit an ICANN registration request or initiate an inbound EPP transfer.
+            </p>
+          </div>
+          <button 
+            type="button" 
+            id="close-register-domain-modal-btn"
+            class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer"
+          >
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <!-- Form Body -->
+        <form id="register-domain-form" class="space-y-4">
+          
+          <!-- Domain Name -->
+          <div>
+            <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+              DOMAIN NAME
+            </label>
+            <input 
+              type="text" 
+              id="modal-domain-name-input"
+              required
+              placeholder="e.g. yourbrand.com"
+              class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+            />
+          </div>
+
+          <!-- Registrar & Operation Type -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                REGISTRATION ACTION
+              </label>
+              <select 
+                id="modal-domain-action-select"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+              >
+                <option value="new">New Registration (1 Year)</option>
+                <option value="transfer">Inbound Transfer (with EPP)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                REGISTRAR BACKEND
+              </label>
+              <select 
+                id="modal-domain-registrar-select"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white focus:outline-none focus:border-zinc-500 font-mono"
+              >
+                <option value="OpenSRS / Tucows">OpenSRS / Tucows API</option>
+                <option value="Namecheap API">Namecheap API</option>
+                <option value="Cloudflare Registrar">Cloudflare Registrar</option>
+                <option value="Nominet UK">Nominet Direct (.uk)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Client Registrant Contact -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                REGISTRANT CLIENT
+              </label>
+              <input 
+                type="text" 
+                id="modal-domain-client-name"
+                required
+                placeholder="Jane Doe"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500"
+              />
+            </div>
+            <div>
+              <label class="block text-xs font-mono font-medium text-zinc-700 dark:text-zinc-300 mb-1">
+                REGISTRANT EMAIL
+              </label>
+              <input 
+                type="email" 
+                id="modal-domain-client-email"
+                required
+                placeholder="jane@example.com"
+                class="w-full px-3 py-2 text-xs bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-300 dark:border-zinc-800 rounded-md text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:border-zinc-500 font-mono"
+              />
+            </div>
+          </div>
+
+          <!-- Auto-renew & Privacy Toggles -->
+          <div class="space-y-2 pt-1">
+            <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="shield" class="w-4 h-4 text-emerald-500"></i>
+                <div class="text-xs font-medium text-zinc-900 dark:text-zinc-200">Free WHOIS Privacy Protection</div>
+              </div>
+              <input type="checkbox" id="modal-domain-whois-toggle" checked class="rounded border-zinc-300 text-black focus:ring-0 w-4 h-4 cursor-pointer" />
+            </div>
+
+            <div class="p-3 rounded-lg bg-zinc-50 dark:bg-zinc-900/40 border border-zinc-200/80 dark:border-zinc-800/80 flex items-center justify-between">
+              <div class="flex items-center gap-2.5">
+                <i data-lucide="refresh-cw" class="w-4 h-4 text-emerald-500"></i>
+                <div class="text-xs font-medium text-zinc-900 dark:text-zinc-200">Enable Auto-Renewal</div>
+              </div>
+              <input type="checkbox" id="modal-domain-renew-toggle" checked class="rounded border-zinc-300 text-black focus:ring-0 w-4 h-4 cursor-pointer" />
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="pt-3 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-end gap-2">
+            <button 
+              type="button" 
+              id="cancel-register-domain-btn"
+              class="px-3.5 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Cancel
+            </button>
+            <button 
+              type="submit" 
+              class="px-4 py-2 text-xs font-mono font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+            >
+              Submit Registration
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  
+
+      <!-- 4. Slide-over Details Drawer -->
+      
+    <div id="domain-details-drawer" class="fixed inset-0 z-50 overflow-hidden hidden transition-all duration-300">
+      <!-- Backdrop -->
+      <div id="domain-details-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
+      
+      <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+        <div class="w-screen max-w-lg bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 p-6 flex flex-col justify-between shadow-2xl overflow-y-auto custom-scrollbar">
+          
+          <div>
+            <!-- Drawer Header -->
+            <div class="flex items-start justify-between pb-4 border-b border-zinc-100 dark:border-zinc-800/80">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span id="drawer-domain-status" class="text-xs font-mono font-semibold text-emerald-500">Active</span>
+                  <span class="text-zinc-600 dark:text-zinc-700">•</span>
+                  <span id="drawer-domain-registrar" class="text-xs font-mono text-zinc-400">OpenSRS / Tucows</span>
+                </div>
+                <h3 id="drawer-domain-name" class="text-lg font-bold font-display text-zinc-900 dark:text-white mt-1">techflow-media.com</h3>
+                <p id="drawer-domain-client" class="text-xs font-mono text-zinc-400 mt-0.5">Sarah Jenkins (sarah@techflow.io)</p>
+              </div>
+              <button type="button" id="close-domain-drawer-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-900 transition-colors cursor-pointer">
+                <i data-lucide="x" class="w-5 h-5"></i>
+              </button>
+            </div>
+
+            <!-- Specs Grid -->
+            <div class="mt-6 space-y-4">
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-3">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  REGISTRATION & LIFECYCLE
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">DAYS REMAINING</span>
+                    <span id="drawer-domain-days" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">198 days</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">RENEWAL PRICE</span>
+                    <span id="drawer-domain-price" class="font-mono font-semibold text-zinc-900 dark:text-zinc-100">$13.99/yr</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">REGISTERED ON</span>
+                    <span id="drawer-domain-registered" class="font-mono text-zinc-800 dark:text-zinc-200">2021-04-12</span>
+                  </div>
+                  <div>
+                    <span class="text-zinc-400 block text-[11px]">EXPIRATION DATE</span>
+                    <span id="drawer-domain-expires" class="font-mono text-zinc-800 dark:text-zinc-200">2025-04-12</span>
+                  </div>
+                </div>
+
+                <div class="pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60 flex items-center justify-between text-xs">
+                  <span class="text-zinc-400 text-[11px]">WHOIS PRIVACY PROTECTION</span>
+                  <span id="drawer-domain-whois" class="font-mono font-medium text-emerald-500">Enabled (Masked)</span>
+                </div>
+
+                <div class="pt-2 border-t border-zinc-200/60 dark:border-zinc-800/60 flex items-center justify-between text-xs">
+                  <span class="text-zinc-400 text-[11px]">DNSSEC SIGNING</span>
+                  <span id="drawer-domain-dnssec" class="font-mono font-medium text-emerald-500">Active (DS Record Synced)</span>
+                </div>
+              </div>
+
+              <!-- Nameservers Configuration -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+                <div class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                  DELEGATED NAMESERVERS
+                </div>
+                <div id="drawer-domain-ns-list" class="space-y-1 font-mono text-xs text-zinc-800 dark:text-zinc-200">
+                  <!-- Injected via JS -->
+                </div>
+              </div>
+
+              <!-- EPP / Auth Code Box -->
+              <div class="p-4 rounded-lg bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200/80 dark:border-zinc-800/80 space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-400">
+                    EPP / TRANSFER AUTH CODE
+                  </span>
+                  <button 
+                    type="button" 
+                    id="drawer-copy-epp-btn"
+                    class="text-xs font-mono text-zinc-600 dark:text-zinc-300 hover:text-black dark:hover:text-white flex items-center gap-1 cursor-pointer"
+                  >
+                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                    <span id="drawer-epp-copy-label">Copy Code</span>
+                  </button>
+                </div>
+                <div class="p-2.5 rounded bg-zinc-100 dark:bg-zinc-950 font-mono text-xs text-zinc-700 dark:text-zinc-300 flex items-center justify-between">
+                  <span id="drawer-domain-epp-text">EPP-7aB9#Hostlab!2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Drawer Footer Actions -->
+          <div class="pt-4 border-t border-zinc-100 dark:border-zinc-800/80 flex items-center justify-between gap-3">
+            <button 
+              type="button" 
+              id="drawer-renew-domain-btn"
+              class="px-4 py-2 text-xs font-mono font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-black hover:bg-zinc-800 dark:hover:bg-zinc-200 transition-colors shadow-sm cursor-pointer"
+            >
+              Extend Renewal (+1 Yr)
+            </button>
+            <button 
+              type="button" 
+              id="drawer-domain-done-btn"
+              class="px-3.5 py-2 text-xs font-mono rounded-md border border-zinc-200 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors cursor-pointer"
+            >
+              Close
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  
+
+    </div>

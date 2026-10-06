@@ -1,0 +1,276 @@
+<div class="space-y-6 max-w-7xl mx-auto pb-16">
+      
+      <!-- Top Title Bar -->
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-200 dark:border-zinc-800 pb-5">
+        <div>
+          <div class="flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-zinc-500 mb-1">
+            <span>Business Email</span>
+            <span>/</span>
+            <span class="text-zinc-900 dark:text-zinc-100 font-semibold">Deliverability & Reputation</span>
+          </div>
+          <h1 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-white font-display">
+            Email Deliverability & Reputation
+          </h1>
+          <p class="text-xs text-zinc-600 dark:text-zinc-400 mt-1">
+            Monitor real-time sender reputation, SPF/DKIM/DMARC alignment, RBL blacklists, bounce analytics, and inbox placement.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <button 
+            type="button" 
+            id="open-seed-test-btn"
+            class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 transition-colors shadow-sm cursor-pointer"
+          >
+            <i data-lucide="send" class="w-4 h-4"></i>
+            <span>Test Inbox Placement</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>GLOBAL REPUTATION</span>
+            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-500"></i>
+          </div>
+          <div class="text-2xl font-bold text-emerald-600 dark:text-emerald-400 font-display">
+            98.6 / 100
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1 font-mono">
+            Excellent across all clusters
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>DMARC COMPLIANCE</span>
+            <i data-lucide="lock" class="w-4 h-4 text-blue-500"></i>
+          </div>
+          <div class="text-2xl font-bold text-zinc-900 dark:text-white font-display">
+            99.2%
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1 font-mono">
+            DKIM & SPF aligned
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>OUTBOUND (24H)</span>
+            <i data-lucide="mail" class="w-4 h-4 text-zinc-400"></i>
+          </div>
+          <div class="text-2xl font-bold text-zinc-900 dark:text-white font-display">
+            342,850
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1 font-mono">
+            Bounce: 0.28% | Spam: 0.012%
+          </div>
+        </div>
+
+        <div class="p-4 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50">
+          <div class="flex items-center justify-between text-zinc-500 text-xs font-mono mb-2">
+            <span>RBL LISTINGS</span>
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-emerald-500"></i>
+          </div>
+          <div class="text-2xl font-bold text-zinc-900 dark:text-white font-display">
+            0
+          </div>
+          <div class="text-[11px] text-zinc-500 mt-1 font-mono">
+            Scanning 56 global blacklists
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Controls & Tabs -->
+      <div class="space-y-4">
+        
+        <!-- Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2 border-b border-zinc-200 dark:border-zinc-800 pb-2" id="deliverability-filter-tabs">
+          <button 
+            type="button" 
+            data-filter="all" 
+            class="del-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+          >
+            All Domains (<span id="count-all">0</span>)
+          </button>
+          
+          <button 
+            type="button" 
+            data-filter="compliant" 
+            class="del-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Compliant (<span id="count-compliant">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="warning" 
+            class="del-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            Warnings (<span id="count-warning">0</span>)
+          </button>
+
+          <button 
+            type="button" 
+            data-filter="at-risk" 
+            class="del-tab px-3 py-1.5 text-xs font-medium rounded-md transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+          >
+            At-Risk (<span id="count-atrisk">0</span>)
+          </button>
+        </div>
+
+        <!-- Filter Search & Global Action -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+          <div class="relative flex-1 max-w-md">
+            <i data-lucide="search" class="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              id="deliverability-search-input"
+              value=""
+              placeholder="Search by domain name, IP address, or policy..."
+              class="w-full pl-9 pr-4 py-2 text-xs rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-900 dark:text-white placeholder-zinc-400 focus:outline-none focus:ring-1 focus:ring-zinc-900 dark:focus:ring-zinc-100"
+            />
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button 
+              type="button" 
+              id="refresh-rbl-btn"
+              class="text-xs px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900/50 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+            >
+              <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+              <span>Retest All RBLs</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Main Data Table -->
+      <div class="border border-zinc-200 dark:border-zinc-800 rounded-lg bg-white dark:bg-zinc-900/40 overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-900/80 text-zinc-500 font-mono text-[11px] uppercase tracking-wider">
+                <th class="py-3 px-4 font-medium">Domain / Outbound IP</th>
+                <th class="py-3 px-4 font-medium">Reputation</th>
+                <th class="py-3 px-4 font-medium">SPF Alignment</th>
+                <th class="py-3 px-4 font-medium">DKIM Key</th>
+                <th class="py-3 px-4 font-medium">DMARC Policy</th>
+                <th class="py-3 px-4 font-medium text-right">Bounce Rate</th>
+                <th class="py-3 px-4 font-medium text-center">Status</th>
+                <th class="py-3 px-4 font-medium text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="deliverability-table-body" class="divide-y divide-zinc-200 dark:divide-zinc-800 text-zinc-700 dark:text-zinc-300">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Empty state container -->
+        <div id="del-empty-state" class="hidden p-12 text-center">
+          <div class="inline-flex p-3 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-400 mb-3">
+            <i data-lucide="shield-alert" class="w-6 h-6"></i>
+          </div>
+          <h3 class="text-sm font-semibold text-zinc-900 dark:text-white mb-1">No domains found</h3>
+          <p class="text-xs text-zinc-500 max-w-sm mx-auto">
+            No sending domains match your selected filter or search parameters.
+          </p>
+        </div>
+      </div>
+
+      <!-- Slide-Over Drawer Container -->
+      <div id="deliverability-drawer-container"></div>
+
+      <!-- Seed Test Modal -->
+      <div id="seed-test-modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl shadow-2xl w-full max-w-lg overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+          
+          <div class="px-6 py-4 border-b border-zinc-200 dark:border-zinc-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="send" class="w-5 h-5 text-zinc-900 dark:text-white"></i>
+              <h3 class="font-bold font-display text-zinc-900 dark:text-white text-base">Inbox Placement Simulator</h3>
+            </div>
+            <button type="button" id="close-seed-test-modal-btn" class="p-1 rounded-md text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200">
+              <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <form id="seed-test-form" class="p-6 space-y-4 text-xs">
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Select Sender Domain</label>
+              <select id="modal-test-domain" class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none">
+                <option value="techflow-media.com">techflow-media.com (185.193.64.12)</option><option value="apexstudios.design">apexstudios.design (185.193.64.14)</option><option value="cloudscale-saas.net">cloudscale-saas.net (185.193.65.20)</option><option value="urbanbistro.io">urbanbistro.io (185.193.64.12)</option><option value="hypervault-fintech.com">hypervault-fintech.com (185.193.66.88)</option><option value="nexus-logistics.de">nexus-logistics.de (185.193.64.14)</option><option value="solarpulse.energy">solarpulse.energy (185.193.65.20)</option><option value="krypton-security.org">krypton-security.org (185.193.66.88)</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Mailbox Test Seed Network</label>
+              <div class="space-y-2 p-3 rounded-lg border border-zinc-200 dark:border-zinc-800 bg-zinc-50 dark:bg-zinc-800/40">
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                  <span>Google Workspace / Gmail Consumer Seeds (12 inboxes)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                  <span>Microsoft 365 / Outlook Consumer Seeds (10 inboxes)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                  <span>Yahoo & AOL Mail Seeds (6 inboxes)</span>
+                </label>
+                <label class="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked class="rounded border-zinc-300 dark:border-zinc-700 text-zinc-900 w-4 h-4" />
+                  <span>ProtonMail & Apple iCloud Mail Seeds (4 inboxes)</span>
+                </label>
+              </div>
+            </div>
+
+            <div>
+              <label class="block font-mono uppercase text-zinc-500 mb-1.5">Test Subject Line</label>
+              <input 
+                type="text" 
+                id="modal-test-subject" 
+                value="[Hostlab Deliverability Audit] RFC Compliance Verification Probe" 
+                required
+                class="w-full px-3 py-2 rounded-md border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white font-mono focus:outline-none"
+              />
+            </div>
+
+            <div id="test-run-result" class="hidden p-3 rounded-lg bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-300 font-mono">
+              <div class="font-bold flex items-center gap-1.5">
+                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-500"></i>
+                Placement Probe Complete: 98.4% Inbox Delivered
+              </div>
+              <div class="text-[11px] mt-1 text-emerald-700 dark:text-emerald-400">
+                Gmail: 100% Inbox • Microsoft 365: 100% Inbox • Yahoo: 96% Inbox • 0% Spam Junk
+              </div>
+            </div>
+
+            <div class="flex items-center justify-end gap-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <button 
+                type="button" 
+                id="cancel-seed-test-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white"
+              >
+                Cancel
+              </button>
+              <button 
+                type="submit" 
+                id="submit-seed-test-btn"
+                class="px-4 py-2 text-xs font-medium rounded-md bg-zinc-900 text-white dark:bg-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-100 flex items-center gap-1.5"
+              >
+                <span>Dispatch Seed Probe</span>
+              </button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
